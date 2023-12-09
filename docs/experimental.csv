@@ -1,0 +1,13 @@
+type,box_num,box_lab,n
+e,1,Observational,NA
+e,2,Expression of interest,xx
+e,3,Assessment for eligibility:,"xxxx, xx"
+e,4,Screened,xx
+e,5,Excluded:,"xxxx, xx"
+e,6,Recruited and randomized,xx
+e,7,Group 1,xx
+e,8,Group 2,xx
+e,9,Drop out:,xxxx. xx
+e,10,Completed trial,xx
+e,11,Excluded:,"Lack of sequencing, xx, Low number of reads, xx"
+e,12,Total samples included in the analysis,xx
