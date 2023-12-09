@@ -8,6 +8,13 @@
 
 Julia package and Genie app for the _Strengthening The Organization and Reporting of Microbiome Studies (STORMS) checklist_ ([Mirzayi et al., 2021](https://doi.org/10.1038/s41591-021-01552-x)).
 
+<div align="center">
+    <center>
+        <img src="docs/observational.svg" alt="observational example" width="250">
+        <img src="docs/experimental.svg" alt="experimental example" width="250">
+    </center>
+</div>
+
 ## References :book:
 Inc., P. T. (2015). Collaborative data science. Montreal, QC: Plotly Technologies Inc.<br>[https://plot.ly](https://plot.ly)
 

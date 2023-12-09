@@ -13,7 +13,7 @@ const height_for_boxes_with_1_line_of_text::Float64 = ymax * 0.05
 const height_for_boxes_with_2_lines_of_text::Float64 = height_for_boxes_with_1_line_of_text * 1.5
 const height_for_boxes_with_3_lines_of_text::Float64 = height_for_boxes_with_1_line_of_text * 2
 
-const textleftmargin::Int64 = 6
+const textleftmargin::Int64 = 8
 
 const column_1::Float64 = 40
 const column_2::Float64 = column_1 + xmax / 2
@@ -244,64 +244,64 @@ function observational(
 
     text_data = Dict(
         :box1_line1 => (
-            "$(data[1, :box_lab])"
+            "<b>$(data[1, :box_lab])</b>"
         ),
         :box2_line1 => (
             "$(data[2, :box_lab])"
         ),
         :box2_line2 => (
-            "n = $(data[2, :n])"
+            "<i>n</i> = $(data[2, :n])"
         ),
         :box3_line1 => (
-            "$(data[3, :box_lab])"
+            "<b>$(data[3, :box_lab])</b>"
         ),
         :box3_line2 => (
-            "$(data[3, :box_var]) n = $(data[3, :n])"
+            "$(data[3, :box_var]) <i>n</i> = $(data[3, :n])"
         ),
         :box4_line1 => (
             "$(data[4, :box_lab])"
         ),
         :box4_line2 => (
-            "n = $(data[4, :n])"
+            "<i>n</i> = $(data[4, :n])"
         ),
         :box5_line1 => (
-            "$(data[5, :box_lab])"
+            "<b>$(data[5, :box_lab])</b>"
         ),
         :box5_line2 => (
-            "$(data[5, :box_var]) n = $(data[5, :n])"
+            "$(data[5, :box_var]) <i>n</i> = $(data[5, :n])"
         ),
         :box6_line1 => (
             "$(data[6, :box_lab])"
         ),
         :box6_line2 => (
-            "n = $(data[6, :n])"
+            "<i>n</i> = $(data[6, :n])"
         ),
         :box7_line1 => (
-            "$(data[7, :box_lab])"
+            "<b>$(data[7, :box_lab])</b>"
         ),
         :box7_line2 => (
-            "$(data[7, :box_var]) n = $(data[7, :n])"
+            "$(data[7, :box_var]) <i>n</i> = $(data[7, :n])"
         ),
         :box8_line1 => (
             "$(data[8, :box_lab])"
         ),
         :box8_line2 => (
-            "n = $(data[8, :n])"
+            "<i>n</i> = $(data[8, :n])"
         ),
         :box9_line1 => (
-            "$(data[9, :box_lab])"
+            "<b>$(data[9, :box_lab])</b>"
         ),
         :box9_line2 => (
-            "$(data[9, :box_var]) n = $(data[9, :n])"
+            "$(data[9, :box_var]) <i>n</i> = $(data[9, :n])"
         ),
         :box9_line3 => (
-            "$(data[10, :box_var]) n = $(data[10, :n])"
+            "$(data[10, :box_var]) <i>n</i> = $(data[10, :n])"
         ),
         :box10_line1 => (
             "$(data[11, :box_lab])"
         ),
         :box10_line2 => (
-            "n = $(data[11, :n])"
+            "<i>n</i> = $(data[11, :n])"
         )
     )
     
@@ -422,7 +422,7 @@ function observational(
         annotations=arrows
     )
 
-    plot(text,layout)
+    plot(text, layout)
 
 end
 
