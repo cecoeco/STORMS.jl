@@ -1,4 +1,4 @@
-type,box_num,box_lab,n
+box_type,box_num,box_lab,n
 e,1,Observational,NA
 e,2,Expression of interest,xx
 e,3,Assessment for eligibility:,"xxxx, xx"

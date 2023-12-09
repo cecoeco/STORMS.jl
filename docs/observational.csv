@@ -1,11 +1,12 @@
-type,box_num,box_lab,n
-o,1,Observational,NA
-o,2,Expression of interest,xx
-o,3,Assessment for eligibility:,"xxxx, xx"
-o,4,Screened,xx
-o,5,Excluded:,"xxxx, xx"
-o,6,Recruited,xx
-o,7,Drop out:,"xxxx, xx"
-o,8,Data available for analysis,xx
-o,9,Excluded:,"Lack of sequencing, xx, Low number of reads, xx"
-o,10,Total smaples included in the analysis,xx
+box_type,box_num,box_lab,box_var,n
+o,1,Observational,NA,NA
+o,2,Expression of interest,NA,xx
+o,3,Assessment for eligibility:,xxxx,xx
+o,4,Screened,NA,xx
+o,5,Excluded:,xxxx,xx
+o,6,Recruited,NA,xx
+o,7,Drop out:,xxxx,xx
+o,8,Data available for analysis,NA,xx
+o,9,Excluded:,Lack of sequencing,xx
+o,9,Excluded,Low number of reads,xx
+o,10,Total samples included in the analysis,NA,xx
