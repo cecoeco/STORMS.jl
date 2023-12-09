@@ -1,26 +1,30 @@
 # src/STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies
 
-using PlotlyJS, Colors, CSV, DataFrames
+using PlotlyJS
+using Colors
+using CSV
+using DataFrames
 
 const xmin::Int64 = 0; const xmax::Int64 = 800
 const ymin::Int64 = 0; const ymax::Int64 = 800
 
-const boxwidth::Int64 = xmax * 0.33
-const height_for_boxes_with_1_line_of_text::Int64 = ymax * 0.05
-const height_for_boxes_with_2_lines_of_text::Int64 = height_for_boxes_with_1_line_of_text * 1.5
-const height_for_boxes_with_3_lines_of_text::Int64 = height_for_boxes_with_1_line_of_text * 2
+const boxwidth::Float64 = xmax / 2.5
+const height_for_boxes_with_1_line_of_text::Float64 = ymax * 0.05
+const height_for_boxes_with_2_lines_of_text::Float64 = height_for_boxes_with_1_line_of_text * 1.5
+const height_for_boxes_with_3_lines_of_text::Float64 = height_for_boxes_with_1_line_of_text * 2
 
 const textleftmargin::Int64 = 6
 
-const column_1::Int64 = 150
-const column_2::Int64 = 500
+const column_1::Float64 = 40
+const column_2::Float64 = column_1 + xmax / 2
 
-const row_1::Int64 = 725
-const row_2::Int64 = 625
-const row_3::Int64 = 500
-const row_4::Int64 = 375
-const row_5::Int64 = 250
-const row_6::Int64 = 125
+const row_1::Int64 = ymax - 125
+const row_2::Int64 = row_1 - 75
+const row_3::Int64 = row_2 - 125
+const row_4::Int64 = row_3 - 125
+const row_5::Int64 = row_4 - 125
+const row_6::Int64 = row_5 - 125
+const row_7::Int64 = row_6 - 125
 
 function observational(
     observational_data::AbstractString="docs/observational.csv",
@@ -28,7 +32,7 @@ function observational(
     topboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
     leftboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
     rightboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
-    textsize::Number=15,
+    textsize::Number=17,
     textfont::AbstractString="Helvetica",
     textcolor="black",
     arrowheadshape::Int64=2,
@@ -38,16 +42,36 @@ function observational(
     data = CSV.read(observational_data, DataFrame)
 
     box_origin = Dict(
-        1 => (x=column_1, y=row_1),
-        2 => (x=column_1, y=row_2),
-        3 => (x=column_2, y=(row_2 + row_3) / 2),
-        4 => (x=column_1, y=row_3),
-        5 => (x=column_2, y=(row_3 + row_4) / 2),
-        6 => (x=column_1, y=row_4),
-        7 => (x=column_2, y=(row_4 + row_5) / 2),
-        8 => (x=column_1, y=row_5),
-        9 => (x=column_2, y=(row_5 + row_6) / 2.25),
-       10 => (x=column_1, y=row_6)
+        1 => (
+            x=column_1, y=row_1
+        ),
+        2 => (
+            x=column_1, y=row_2
+        ),
+        3 => (
+            x=column_2, y=(row_2 + row_3) / 2
+        ),
+        4 => (
+            x=column_1, y=row_3
+        ),
+        5 => (
+            x=column_2, y=(row_3 + row_4) / 2
+        ),
+        6 => (
+            x=column_1, y=row_4
+        ),
+        7 => (
+            x=column_2, y=(row_4 + row_5) / 2
+        ),
+        8 => (
+            x=column_1, y=row_5
+        ),
+        9 => (
+            x=column_2, y=(row_5 + row_6) / 2.25
+        ),
+       10 => (
+        x=column_1, y=row_6
+        )
     )
 
     box_coordinates = Dict(
@@ -126,6 +150,8 @@ function observational(
                 leftboxcolor
             elseif i % 2 != 0 && i != 1
                 rightboxcolor
+            else
+                RGBA(0.0, 0.0, 0.0, 1.0)
             end,
             line=attr(
                 color=if i == 1
@@ -133,6 +159,8 @@ function observational(
                 elseif i % 2 == 0
                     "black"
                 elseif i % 2 != 0 && i != 1
+                    "black"
+                else
                     "black"
                 end,
                 width=1
@@ -403,27 +431,16 @@ observational()
 #=
 function experimental(
     experimental_data::AbstractString="docs/experimental.csv",
-
     transparent_bg::Bool=false,
-
-    #topboxcolor::Union{Nothing,AbstractString}=RGBA(0.0, 0.0, 0.0, 1.0),
-
-    #firstcolumncolor::Union{Nothing,AbstractString} = RGBA(0.0, 0.0, 0.0, 1.0),
-
-    #secondcolumncolor::Union{Nothing,AbstractString}=RGBA(0.0, 0.0, 0.0, 1.0),
-
-    fontsize::Number=12.5,
-
-    font::AbstractString="Helvetica",
-
-    #fontcolor::Union{Nothing,AbstractString}=RGBA(0.0, 0.0, 0.0, 1.0),
-
-    arrowheadshape::AbstractString="automatic",
-
-    #arrowcolor::Union{Nothing,AbstractString}=RGBA(0.0, 0.0, 0.0, 1.0),
-
-    arrowheadsize::Number=12.5
-    )
+    topboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
+    leftboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
+    rightboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
+    textsize::Number=15,
+    textfont::AbstractString="Helvetica",
+    textcolor="black",
+    arrowheadshape::Int64=2,
+    arrowcolor="black",
+    arrowheadsize::Number=1)
 
     data = CSV.read(experimental_data, DataFrame)
 
@@ -527,48 +544,28 @@ function experimental(
     ]
 
 
-    if transparent_bg == true
-        layout = Layout(
-            plot_bgcolor="rgba(0,0,0,0)",
-            
-            paper_bgcolor="rgba(0,0,0,0)",
-            
-            xaxis_visible=false,
-            
-            yaxis_visible=false,
-            
-            xaxis_showgrid=false,
-            
-            yaxis_showgrid=false,
-           
-            xaxis_zeroline=false,
-            
-            yaxis_zeroline=false,
-            
-            width=xmax,
-            
-            height=ymax
-        )
-    else
-        layout = Layout(
-            xaxis_visible=false,
-            
-            yaxis_visible=false,
-            
-            xaxis_showgrid=false,
-            
-            yaxis_showgrid=false,
-            
-            xaxis_zeroline=false,
-            
-            yaxis_zeroline=false,
-            
-            width=xmax,
-            
-            height=ymax
-        )
+    layout = Layout(
+        xaxis=attr(
+            range=[xmin, xmax], 
+            showgrid=false,
+            ticks=false,
+            showticklabels=false
+        ),
+        yaxis=attr(
+            range=[ymin, ymax], 
+            showgrid=false,
+            ticks=false,
+            showticklabels=false
+        ),
+        width=xmax,
+        height=ymax,
+        margin=attr(t=0, r=0, b=0, l=0),
+        plot_bgcolor=transparent_bg ? RGBA(0, 0, 0, 0) : RGBA(1, 1, 1, 1),
+        shapes=boxes,
+        annotations=arrows
+    )
 
-    end
+    plot(text,layout)
 
 end
 
