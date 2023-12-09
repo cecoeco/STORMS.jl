@@ -29,11 +29,11 @@ function observational(
   
     font::AbstractString="Helvetica",
   
-    #fontcolor::Union{Nothing,AbstractString}=RGBA(0.0, 0.0, 0.0, 1.0),
+    fontcolor="black",
   
     arrowheadshape::AbstractString="automatic",
   
-    #arrowcolor::Union{Nothing,AbstractString}=RGBA(0.0, 0.0, 0.0, 1.0),
+    arrowcolor="black",
   
     arrowheadsize::Number=12.5
     )
@@ -227,7 +227,21 @@ function observational(
         )
     )
 
-    
+    arrows = []
+    for (arrow_name, coordinates) in arrow_coordinates
+        arrow_trace = scatter(
+            x=[coordinates.x0, coordinates.x1],
+            y=[coordinates.y0, coordinates.y1],
+            mode="lines",
+            line=attr(
+                width=2,
+                color=arrowcolor,
+                arrowhead=2,
+                arrowsize=arrowheadsize,
+            )
+        )
+        push!(arrows, arrow_trace)
+    end
 
     #=
     text
@@ -269,7 +283,8 @@ function observational(
         height=ymax,
         margin=attr(t=0, r=0, b=0, l=0),
         plot_bgcolor=transparent_bg ? RGBA(0, 0, 0, 0) : RGBA(1, 1, 1, 1),
-        shapes = boxes
+        shapes = boxes,
+        annotations=arrows
     )
 
     plot(layout #=, traces =#)
