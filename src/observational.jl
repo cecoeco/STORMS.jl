@@ -3,20 +3,20 @@ using Colors
 using CSV
 using DataFrames
 
-const xMIN::Int64 = 0
-const xMAX::Int64 = 800
-const yMIN::Int64 = 0
-const yMAX::Int64 = 800
+const xMINIMUM::Int64 = 0
+const xMAXIMUM::Int64 = 800
+const yMINIMUM::Int64 = 0
+const yMAXIMUM::Int64 = 800
 
-const BOXWIDTH::Float64 = xMAX / 2.5
-const height_for_boxes_with_1_line_of_text::Float64 = yMAX * 0.05
+const BOXWIDTH::Float64 = xMAXIMUM / 2.5
+const height_for_boxes_with_1_line_of_text::Float64 = yMAXIMUM * 0.05
 const height_for_boxes_with_2_lines_of_text::Float64 = height_for_boxes_with_1_line_of_text * 1.5
 const height_for_boxes_with_3_lines_of_text::Float64 = height_for_boxes_with_1_line_of_text * 2
 
 const x0_COLUMN1::Float64 = 40
-const x0_COLUMN2::Float64 = x0_COLUMN1 + xMAX / 2
+const x0_COLUMN2::Float64 = x0_COLUMN1 + xMAXIMUM / 2
 
-const y0_ROW1::Int64 = yMAX - 125
+const y0_ROW1::Int64 = yMAXIMUM - 125
 const y0_ROW2::Int64 = y0_ROW1 - 75
 const y0_ROW3::Int64 = y0_ROW2 - 125
 const y0_ROW4::Int64 = y0_ROW3 - 125
@@ -421,19 +421,19 @@ function observational(
 
     layout = Layout(
         xaxis=attr(
-            range=[xMIN, xMAX],
+            range=[xMINIMUM, xMAXIMUM],
             showgrid=false,
             ticks=false,
             showticklabels=false
         ),
         yaxis=attr(
-            range=[yMIN, yMAX],
+            range=[yMINIMUM, yMAXIMUM],
             showgrid=false,
             ticks=false,
             showticklabels=false
         ),
-        width=xMAX,
-        height=yMAX,
+        width=xMAXIMUM,
+        height=yMAXIMUM,
         margin=attr(t=0, r=0, b=0, l=0),
         plot_bgcolor=transparent_bg ? RGBA(0, 0, 0, 0) : RGBA(1, 1, 1, 1),
         shapes=boxes,
