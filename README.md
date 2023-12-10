@@ -19,7 +19,6 @@ Julia package :package: and Genie app :genie_woman: based on the <i><b>S</b>tren
 Mirzayi, C., Waldron, L., & Marques, F. (2021). Reporting guidelines for human microbiome research: The STORMS checklist and analytical sample size flowchart. Nature Medicine, 1–8.<br>[https://doi.org/10.5281/zenodo.5714305](https://doi.org/10.5281/zenodo.5714305)
 
 ## License :balance_scale:
-
 Copyright © 2023. Ceco E Maples
 
 This work is licensed under the [MIT License](https://opensource.org/license/mit/) - see the [`LICENSE`](LICENSE.md) file for details.
