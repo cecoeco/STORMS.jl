@@ -6,7 +6,7 @@
     </center>
 </div>
 
-Julia package :package: and Genie app :genie_woman: based on the <i><b>S</b>trengthening <b>T</b>he <b>O</b>rganization and <b>R</b>eporting of <b>M</b>icrobiome <b>S</b>tudies</i> (STORMS) checklist :white_check_mark: and analytical sample size flowcharts :chart_with_upwards_trend: ([Mirzayi et al., 2021](https://doi.org/10.1038/s41591-021-01552-x)).
+Julia package :package: and Genie app :genie_woman: based on the <i><b>S</b>trengthening <b>T</b>he <b>O</b>rganization and <b>R</b>eporting of <b>M</b>icrobiome <b>S</b>tudies</i> (STORMS) checklist :white_check_mark: and analytical sample size flowcharts :chart_with_upwards_trend: ([Mirzayi et al., 2021](https://doi.org/10.5281/zenodo.5714305)).
 
 <div align="center">
     <center>
