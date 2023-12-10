@@ -27,8 +27,8 @@ const SHIFT_TEXT_RIGHT_BY::Int64 = 8
 
 const LINE1_TEXT_PADDING_BOTTOM_1LINED_BOX::Float64 = height_for_boxes_with_1_line_of_text * 0.50
 
-const LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX::Float64 = height_for_boxes_with_2_lines_of_text * 0.75
-const LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX::Float64 = height_for_boxes_with_2_lines_of_text * 0.25
+const LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX::Float64 = height_for_boxes_with_2_lines_of_text * 0.66
+const LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX::Float64 = height_for_boxes_with_2_lines_of_text * 0.33
 
 const LINE1_TEXT_PADDING_BOTTOM_3LINED_BOX::Float64 = height_for_boxes_with_3_lines_of_text * 0.75
 const LINE2_TEXT_PADDING_BOTTOM_3LINED_BOX::Float64 = height_for_boxes_with_3_lines_of_text * 0.50
@@ -255,7 +255,7 @@ function observational(
             hovertext=arrow_name,
             arrowhead=arrowheadshape,
             arrowcolor=arrowcolor,
-            arrowsize=arrowheadsize,
+            arrowsize=arrowheadsize
         )
         push!(arrows, arrow)
     end
@@ -443,3 +443,5 @@ function observational(
     plot(text, layout)
 
 end
+
+observational()
