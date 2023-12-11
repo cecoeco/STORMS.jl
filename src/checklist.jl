@@ -30,7 +30,7 @@ function checklist(
                     "<b>Item</b>", 
                     "<b>Recommendation</b>", 
                     "<b>Item Source</b>", 
-                    "<b>Additonal Guidance</b>",
+                    "<b>Additional Guidance</b>",
                     "<b>Yes/No/NA</b>", 
                     "<b>Comments or location in manuscript</b>"
                 ],
