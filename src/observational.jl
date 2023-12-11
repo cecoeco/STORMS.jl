@@ -3,36 +3,37 @@ using Colors
 using CSV
 using DataFrames
 
-const xMINIMUM::Int64 = 0
-const xMAXIMUM::Int64 = 800
-const yMINIMUM::Int64 = 0
-const yMAXIMUM::Int64 = 800
+const xMINIMUM_OBSERVATIONAL::Int64 = 0
+const xMAXIMUM_OBSERVATIONAL::Int64 = 800
 
-const BOXWIDTH::Float64 = xMAXIMUM / 2.5
-const height_for_boxes_with_1_line_of_text::Float64 = yMAXIMUM * 0.05
-const height_for_boxes_with_2_lines_of_text::Float64 = height_for_boxes_with_1_line_of_text * 1.5
-const height_for_boxes_with_3_lines_of_text::Float64 = height_for_boxes_with_1_line_of_text * 2
+const yMINIMUM_OBSERVATIONAL::Int64 = 0
+const yMAXIMUM_OBSERVATIONAL::Int64 = 800
 
-const x0_COLUMN1::Float64 = 40
-const x0_COLUMN2::Float64 = x0_COLUMN1 + xMAXIMUM / 2
+const BOXWIDTH_OBSERVATIONAL::Float64 = xMAXIMUM_OBSERVATIONAL / 2.5
+const HEIGHT_FOR_BOXES_WITH_1_LINE_OF_TEXT_OBSERVATIONAL::Float64 = yMAXIMUM_OBSERVATIONAL * 0.05
+const HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL::Float64 = HEIGHT_FOR_BOXES_WITH_1_LINE_OF_TEXT_OBSERVATIONAL * 1.5
+const HEIGHT_FOR_BOXES_WITH_3_LINES_OF_TEXT_OBSERVATIONAL::Float64 = HEIGHT_FOR_BOXES_WITH_1_LINE_OF_TEXT_OBSERVATIONAL * 2
 
-const y0_ROW1::Int64 = yMAXIMUM - 125
-const y0_ROW2::Int64 = y0_ROW1 - 75
-const y0_ROW3::Int64 = y0_ROW2 - 125
-const y0_ROW4::Int64 = y0_ROW3 - 125
-const y0_ROW5::Int64 = y0_ROW4 - 125
-const y0_ROW6::Int64 = y0_ROW5 - 125
+const x0_COLUMN1_OBSERVATIONAL::Float64 = 40
+const x0_COLUMN2_OBSERVATIONAL::Float64 = x0_COLUMN1_OBSERVATIONAL + xMAXIMUM_OBSERVATIONAL / 2
 
-const SHIFT_TEXT_RIGHT_BY::Int64 = 8
+const y0_ROW1_OBSERVATIONAL::Int64 = yMAXIMUM_OBSERVATIONAL - 125
+const y0_ROW2_OBSERVATIONAL::Int64 = y0_ROW1_OBSERVATIONAL - 75
+const y0_ROW3_OBSERVATIONAL::Int64 = y0_ROW2_OBSERVATIONAL - 125
+const y0_ROW4_OBSERVATIONAL::Int64 = y0_ROW3_OBSERVATIONAL - 125
+const y0_ROW5_OBSERVATIONAL::Int64 = y0_ROW4_OBSERVATIONAL - 125
+const y0_ROW6_OBSERVATIONAL::Int64 = y0_ROW5_OBSERVATIONAL - 125
 
-const LINE1_TEXT_PADDING_BOTTOM_1LINED_BOX::Float64 = height_for_boxes_with_1_line_of_text * 0.50
+const SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL::Int64 = 8
 
-const LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX::Float64 = height_for_boxes_with_2_lines_of_text * 0.66
-const LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX::Float64 = height_for_boxes_with_2_lines_of_text * 0.33
+const LINE1_TEXT_PADDING_BOTTOM_1LINED_BOX_OBSERVATIONAL::Float64 = HEIGHT_FOR_BOXES_WITH_1_LINE_OF_TEXT_OBSERVATIONAL * 0.50
 
-const LINE1_TEXT_PADDING_BOTTOM_3LINED_BOX::Float64 = height_for_boxes_with_3_lines_of_text * 0.75
-const LINE2_TEXT_PADDING_BOTTOM_3LINED_BOX::Float64 = height_for_boxes_with_3_lines_of_text * 0.50
-const LINE3_TEXT_PADDING_BOTTOM_3LINED_BOX::Float64 = height_for_boxes_with_3_lines_of_text * 0.25
+const LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL::Float64 = HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL * 0.66
+const LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL::Float64 = HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL * 0.33
+
+const LINE1_TEXT_PADDING_BOTTOM_3LINED_BOX_OBSERVATIONAL::Float64 = HEIGHT_FOR_BOXES_WITH_3_LINES_OF_TEXT_OBSERVATIONAL * 0.75
+const LINE2_TEXT_PADDING_BOTTOM_3LINED_BOX_OBSERVATIONAL::Float64 = HEIGHT_FOR_BOXES_WITH_3_LINES_OF_TEXT_OBSERVATIONAL * 0.50
+const LINE3_TEXT_PADDING_BOTTOM_3LINED_BOX_OBSERVATIONAL::Float64 = HEIGHT_FOR_BOXES_WITH_3_LINES_OF_TEXT_OBSERVATIONAL * 0.25
 
 function observational(
     observational_data::AbstractString="docs/observational.csv",
@@ -51,44 +52,44 @@ function observational(
 
     box_origin = Dict(
         1 => (
-            x=x0_COLUMN1,
-            y=y0_ROW1
+            x=x0_COLUMN1_OBSERVATIONAL,
+            y=y0_ROW1_OBSERVATIONAL
         ),
         2 => (
-            x=x0_COLUMN1,
-            y=y0_ROW2
+            x=x0_COLUMN1_OBSERVATIONAL,
+            y=y0_ROW2_OBSERVATIONAL
         ),
         3 => (
-            x=x0_COLUMN2,
-            y=(y0_ROW2 + y0_ROW3) / 2
+            x=x0_COLUMN2_OBSERVATIONAL,
+            y=(y0_ROW2_OBSERVATIONAL + y0_ROW3_OBSERVATIONAL) / 2
         ),
         4 => (
-            x=x0_COLUMN1,
-            y=y0_ROW3
+            x=x0_COLUMN1_OBSERVATIONAL,
+            y=y0_ROW3_OBSERVATIONAL
         ),
         5 => (
-            x=x0_COLUMN2,
-            y=(y0_ROW3 + y0_ROW4) / 2
+            x=x0_COLUMN2_OBSERVATIONAL,
+            y=(y0_ROW3_OBSERVATIONAL + y0_ROW4_OBSERVATIONAL) / 2
         ),
         6 => (
-            x=x0_COLUMN1,
-            y=y0_ROW4
+            x=x0_COLUMN1_OBSERVATIONAL,
+            y=y0_ROW4_OBSERVATIONAL
         ),
         7 => (
-            x=x0_COLUMN2,
-            y=(y0_ROW4 + y0_ROW5) / 2
+            x=x0_COLUMN2_OBSERVATIONAL,
+            y=(y0_ROW4_OBSERVATIONAL + y0_ROW5_OBSERVATIONAL) / 2
         ),
         8 => (
-            x=x0_COLUMN1,
-            y=y0_ROW5
+            x=x0_COLUMN1_OBSERVATIONAL,
+            y=y0_ROW5_OBSERVATIONAL
         ),
         9 => (
-            x=x0_COLUMN2,
-            y=(y0_ROW5 + y0_ROW6) / 2.25
+            x=x0_COLUMN2_OBSERVATIONAL,
+            y=(y0_ROW5_OBSERVATIONAL + y0_ROW6_OBSERVATIONAL) / 2.25
         ),
         10 => (
-            x=x0_COLUMN1,
-            y=y0_ROW6
+            x=x0_COLUMN1_OBSERVATIONAL,
+            y=y0_ROW6_OBSERVATIONAL
         )
     )
 
@@ -96,62 +97,62 @@ function observational(
         1 => (
             x0=box_origin[1].x,
             y0=box_origin[1].y,
-            x1=box_origin[1].x + (x0_COLUMN2 - x0_COLUMN1) + BOXWIDTH,
-            y1=box_origin[1].y + height_for_boxes_with_1_line_of_text
+            x1=box_origin[1].x + (x0_COLUMN2_OBSERVATIONAL - x0_COLUMN1_OBSERVATIONAL) + BOXWIDTH_OBSERVATIONAL,
+            y1=box_origin[1].y + HEIGHT_FOR_BOXES_WITH_1_LINE_OF_TEXT_OBSERVATIONAL
         ),
         2 => (
             x0=box_origin[2].x,
             y0=box_origin[2].y,
-            x1=box_origin[2].x + BOXWIDTH,
-            y1=box_origin[2].y + height_for_boxes_with_2_lines_of_text
+            x1=box_origin[2].x + BOXWIDTH_OBSERVATIONAL,
+            y1=box_origin[2].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         ),
         3 => (
             x0=box_origin[3].x,
             y0=box_origin[3].y,
-            x1=box_origin[3].x + BOXWIDTH,
-            y1=box_origin[3].y + height_for_boxes_with_2_lines_of_text
+            x1=box_origin[3].x + BOXWIDTH_OBSERVATIONAL,
+            y1=box_origin[3].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         ),
         4 => (
             x0=box_origin[4].x,
             y0=box_origin[4].y,
-            x1=box_origin[4].x + BOXWIDTH,
-            y1=box_origin[4].y + height_for_boxes_with_2_lines_of_text
+            x1=box_origin[4].x + BOXWIDTH_OBSERVATIONAL,
+            y1=box_origin[4].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         ),
         5 => (
             x0=box_origin[5].x,
             y0=box_origin[5].y,
-            x1=box_origin[5].x + BOXWIDTH,
-            y1=box_origin[5].y + height_for_boxes_with_2_lines_of_text
+            x1=box_origin[5].x + BOXWIDTH_OBSERVATIONAL,
+            y1=box_origin[5].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         ),
         6 => (
             x0=box_origin[6].x,
             y0=box_origin[6].y,
-            x1=box_origin[6].x + BOXWIDTH,
-            y1=box_origin[6].y + height_for_boxes_with_2_lines_of_text
+            x1=box_origin[6].x + BOXWIDTH_OBSERVATIONAL,
+            y1=box_origin[6].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         ),
         7 => (
             x0=box_origin[7].x,
             y0=box_origin[7].y,
-            x1=box_origin[7].x + BOXWIDTH,
-            y1=box_origin[7].y + height_for_boxes_with_2_lines_of_text
+            x1=box_origin[7].x + BOXWIDTH_OBSERVATIONAL,
+            y1=box_origin[7].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         ),
         8 => (
             x0=box_origin[8].x,
             y0=box_origin[8].y,
-            x1=box_origin[8].x + BOXWIDTH,
-            y1=box_origin[8].y + height_for_boxes_with_2_lines_of_text
+            x1=box_origin[8].x + BOXWIDTH_OBSERVATIONAL,
+            y1=box_origin[8].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         ),
         9 => (
             x0=box_origin[9].x,
             y0=box_origin[9].y,
-            x1=box_origin[9].x + BOXWIDTH,
-            y1=box_origin[9].y + height_for_boxes_with_3_lines_of_text
+            x1=box_origin[9].x + BOXWIDTH_OBSERVATIONAL,
+            y1=box_origin[9].y + HEIGHT_FOR_BOXES_WITH_3_LINES_OF_TEXT_OBSERVATIONAL
         ),
         10 => (
             x0=box_origin[10].x,
             y0=box_origin[10].y,
-            x1=box_origin[10].x + BOXWIDTH,
-            y1=box_origin[10].y + height_for_boxes_with_2_lines_of_text
+            x1=box_origin[10].x + BOXWIDTH_OBSERVATIONAL,
+            y1=box_origin[10].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         )
     )
 
@@ -189,52 +190,52 @@ function observational(
 
     arrow_coordinates = Dict(
         :two_to_three => (
-            x0=box_origin[2].x + BOXWIDTH / 2,
-            y0=box_origin[3].y + height_for_boxes_with_2_lines_of_text / 2,
+            x0=box_origin[2].x + BOXWIDTH_OBSERVATIONAL / 2,
+            y0=box_origin[3].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL / 2,
             x1=box_origin[3].x,
-            y1=box_origin[3].y + height_for_boxes_with_2_lines_of_text / 2
+            y1=box_origin[3].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL / 2
         ),
         :two_to_four => (
-            x0=box_origin[2].x + BOXWIDTH / 2,
+            x0=box_origin[2].x + BOXWIDTH_OBSERVATIONAL / 2,
             y0=box_origin[2].y,
-            x1=box_origin[2].x + BOXWIDTH / 2,
-            y1=box_origin[4].y + height_for_boxes_with_2_lines_of_text
+            x1=box_origin[2].x + BOXWIDTH_OBSERVATIONAL / 2,
+            y1=box_origin[4].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         ),
         :four_to_five => (
-            x0=box_origin[4].x + BOXWIDTH / 2,
-            y0=box_origin[5].y + height_for_boxes_with_2_lines_of_text / 2,
+            x0=box_origin[4].x + BOXWIDTH_OBSERVATIONAL / 2,
+            y0=box_origin[5].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL / 2,
             x1=box_origin[5].x,
-            y1=box_origin[5].y + height_for_boxes_with_2_lines_of_text / 2
+            y1=box_origin[5].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL / 2
         ),
         :four_to_six => (
-            x0=box_origin[4].x + BOXWIDTH / 2,
+            x0=box_origin[4].x + BOXWIDTH_OBSERVATIONAL / 2,
             y0=box_origin[4].y,
-            x1=box_origin[4].x + BOXWIDTH / 2,
-            y1=box_origin[6].y + height_for_boxes_with_2_lines_of_text
+            x1=box_origin[4].x + BOXWIDTH_OBSERVATIONAL / 2,
+            y1=box_origin[6].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         ),
         :six_to_seven => (
-            x0=box_origin[6].x + BOXWIDTH / 2,
-            y0=box_origin[7].y + height_for_boxes_with_2_lines_of_text / 2,
+            x0=box_origin[6].x + BOXWIDTH_OBSERVATIONAL / 2,
+            y0=box_origin[7].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL / 2,
             x1=box_origin[7].x,
-            y1=box_origin[7].y + height_for_boxes_with_2_lines_of_text / 2
+            y1=box_origin[7].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL / 2
         ),
         :six_to_eight => (
-            x0=box_origin[6].x + BOXWIDTH / 2,
+            x0=box_origin[6].x + BOXWIDTH_OBSERVATIONAL / 2,
             y0=box_origin[6].y,
-            x1=box_origin[6].x + BOXWIDTH / 2,
-            y1=box_origin[8].y + height_for_boxes_with_2_lines_of_text
+            x1=box_origin[6].x + BOXWIDTH_OBSERVATIONAL / 2,
+            y1=box_origin[8].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         ),
         :eight_to_nine => (
-            x0=box_origin[8].x + BOXWIDTH / 2,
-            y0=box_origin[9].y + height_for_boxes_with_3_lines_of_text / 2,
+            x0=box_origin[8].x + BOXWIDTH_OBSERVATIONAL / 2,
+            y0=box_origin[9].y + HEIGHT_FOR_BOXES_WITH_3_LINES_OF_TEXT_OBSERVATIONAL / 2,
             x1=box_origin[9].x,
-            y1=box_origin[9].y + height_for_boxes_with_3_lines_of_text / 2
+            y1=box_origin[9].y + HEIGHT_FOR_BOXES_WITH_3_LINES_OF_TEXT_OBSERVATIONAL / 2
         ),
         :eight_to_ten => (
-            x0=box_origin[8].x + BOXWIDTH / 2,
+            x0=box_origin[8].x + BOXWIDTH_OBSERVATIONAL / 2,
             y0=box_origin[8].y,
-            x1=box_origin[8].x + BOXWIDTH / 2,
-            y1=box_origin[10].y + height_for_boxes_with_2_lines_of_text
+            x1=box_origin[8].x + BOXWIDTH_OBSERVATIONAL / 2,
+            y1=box_origin[10].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         )
     )
 
@@ -325,84 +326,84 @@ function observational(
 
     text_coordinates = Dict(
         :box1_line1 => (
-            x=box_origin[1].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[1].y + LINE1_TEXT_PADDING_BOTTOM_1LINED_BOX
+            x=box_origin[1].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[1].y + LINE1_TEXT_PADDING_BOTTOM_1LINED_BOX_OBSERVATIONAL
         ),
         :box2_line1 => (
-            x=box_origin[2].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[2].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[2].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[2].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box2_line2 => (
-            x=box_origin[2].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[2].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[2].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[2].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box3_line1 => (
-            x=box_origin[3].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[3].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[3].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[3].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box3_line2 => (
-            x=box_origin[3].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[3].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[3].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[3].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box4_line1 => (
-            x=box_origin[4].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[4].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[4].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[4].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box4_line2 => (
-            x=box_origin[4].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[4].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[4].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[4].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box5_line1 => (
-            x=box_origin[5].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[5].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[5].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[5].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box5_line2 => (
-            x=box_origin[5].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[5].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[5].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[5].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box6_line1 => (
-            x=box_origin[6].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[6].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[6].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[6].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box6_line2 => (
-            x=box_origin[6].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[6].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[6].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[6].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box7_line1 => (
-            x=box_origin[7].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[7].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[7].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[7].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box7_line2 => (
-            x=box_origin[7].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[7].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[7].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[7].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box8_line1 => (
-            x=box_origin[8].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[8].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[8].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[8].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box8_line2 => (
-            x=box_origin[8].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[8].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[8].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[8].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box9_line1 => (
-            x=box_origin[9].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[9].y + LINE1_TEXT_PADDING_BOTTOM_3LINED_BOX
+            x=box_origin[9].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[9].y + LINE1_TEXT_PADDING_BOTTOM_3LINED_BOX_OBSERVATIONAL
         ),
         :box9_line2 => (
-            x=box_origin[9].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[9].y + LINE2_TEXT_PADDING_BOTTOM_3LINED_BOX
+            x=box_origin[9].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[9].y + LINE2_TEXT_PADDING_BOTTOM_3LINED_BOX_OBSERVATIONAL
         ),
         :box9_line3 => (
-            x=box_origin[9].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[9].y + LINE3_TEXT_PADDING_BOTTOM_3LINED_BOX
+            x=box_origin[9].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[9].y + LINE3_TEXT_PADDING_BOTTOM_3LINED_BOX_OBSERVATIONAL
         ),
         :box10_line1 => (
-            x=box_origin[10].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[10].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[10].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[10].y + LINE1_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         ),
         :box10_line2 => (
-            x=box_origin[10].x + SHIFT_TEXT_RIGHT_BY,
-            y=box_origin[10].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX
+            x=box_origin[10].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
+            y=box_origin[10].y + LINE2_TEXT_PADDING_BOTTOM_2LINED_BOX_OBSERVATIONAL
         )
     )
 
@@ -421,19 +422,19 @@ function observational(
 
     layout = Layout(
         xaxis=attr(
-            range=[xMINIMUM, xMAXIMUM],
+            range=[xMINIMUM_OBSERVATIONAL, xMAXIMUM_OBSERVATIONAL],
             showgrid=false,
             ticks=false,
             showticklabels=false
         ),
         yaxis=attr(
-            range=[yMINIMUM, yMAXIMUM],
+            range=[yMINIMUM_OBSERVATIONAL, yMAXIMUM_OBSERVATIONAL],
             showgrid=false,
             ticks=false,
             showticklabels=false
         ),
-        width=xMAXIMUM,
-        height=yMAXIMUM,
+        width=xMAXIMUM_OBSERVATIONAL,
+        height=yMAXIMUM_OBSERVATIONAL,
         margin=attr(t=0, r=0, b=0, l=0),
         plot_bgcolor=transparent_bg ? RGBA(0, 0, 0, 0) : RGBA(1, 1, 1, 1),
         shapes=boxes,

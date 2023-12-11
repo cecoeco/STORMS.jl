@@ -1,14 +1,14 @@
 using PlotlyJS
 using Colors
 
-const xMINIMUM_PAPER_WIDTH::Int64 = 0
-const xMAXIMUM_PAPER_WIDTH::Int64 = 1100
-const yMINIMUM_PAPER_HEIGHT::Int64 = 0
-const yMAXIMUM_PAPER_HEIGHT::Int64 = 1100
+const xMINIMUM_WIDTH::Int64 = 0
+const xMAXIMUM_WIDTH::Int64 = 1200
+const yMINIMUM_HEIGHT::Int64 = 0
+const yMAXIMUM_HEIGHT::Int64 = 600
 
 function checklist(
     transparent_bg::Bool=false,
-    textsize::Number=7.5,
+    textsize::Number=6,
     textfont::AbstractString="Helvetica",
     textcolor="black",
     #textalignment::AbstractString=["left", "center"],
@@ -370,7 +370,7 @@ function checklist(
                         "",
                         "",
                         "",
-                        "Observational (Case-Control, Cohort, Cross-sectional survey, etc.) or Experimental (Randomized controlled trial, Non-randomized controlled trial, etc.). For a brief description of common study designs see: DOI: 10.11613/BM.2014.022\n\n If applicable, describe any blinding (e.g. single or double-blinding) used in the course of the study.",
+                        "Observational (Case-Control, Cohort, Cross-sectional survey, etc.) or Experimental (Randomized controlled trial, Non-randomized controlled trial, etc.). For a brief description of common study designs see: DOI: 10.11613/BM.2014.022. If applicable, describe any blinding (e.g. single or double-blinding) used in the course of the study.",
                         "Examples of the population of interest could be: adults with no chronic health conditions, adults with type II diabetes, newborns, etc. This is the total population to whom the study is hoped to be generalizable to. The sampling method describes how potential participants were selected from that population.\n\n If the participants are from a substudy of a larger study, provide a brief description of that study and cite that study.\n\n Clearly state how cases and controls are defined.\n\n An example of relevant physiological state might be pre/post menopausal for a vaginal microbiome study; examples of stage in the life history of disease could be whether specimens were collected",
                         "Geographic coordinates can be reported to prevent potential ambiguities if necessary.",
                         "Recruitment is the period in which participants are recruited for the study. In longitudinal studies, follow-up is the date range in which participants are asked to complete a specific assessment. Finally, data collection is the total period in which data is being collected from participants including during initial recruitment through all follow-ups.",
@@ -611,25 +611,23 @@ function checklist(
             )
         ),
         Layout(
-            width=xMAXIMUM_PAPER_WIDTH,
-            height=yMAXIMUM_PAPER_HEIGHT,
+            #width=xMAXIMUM_WIDTH,
+            #height=yMAXIMUM_HEIGHT,
             xaxis=attr(
                 range=[
-                    xMINIMUM_PAPER_WIDTH, 
-                    xMAXIMUM_PAPER_WIDTH
+                    xMINIMUM_WIDTH, 
+                    xMAXIMUM_WIDTH
                 ],
                 showgrid=false
             ),
             yaxis=attr(
                 range=[
-                    yMINIMUM_PAPER_HEIGHT, 
-                    yMAXIMUM_PAPER_HEIGHT
+                    yMINIMUM_HEIGHT, 
+                    yMAXIMUM_HEIGHT
                 ],
                 showgrid=false
             ),
-            margin=attr(
-                t=0, l=0, r=0, b=0
-            ),
+            
             plot_bgcolor=plot_bgcolor = transparent_bg ? RGBA(0, 0, 0, 0) : RGBA(1, 1, 1, 1)
         )
     )
