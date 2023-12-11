@@ -4,3 +4,5 @@
 *.sh linguist-detectable=false
 *.bash linguist-detectable=false
 *.shell linguist-detectable=false
+*shellscript linguist-detectable=false
+*.shellscript linguist-detectable=false
