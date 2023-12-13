@@ -11,46 +11,158 @@ function checklist(
     textsize::Number=6,
     textfont::AbstractString="Helvetica",
     textcolor="black",
-    #textalignment::AbstractString=["left", "center"],
-    headertextsize::Number=17,
+    textalignment::Vector{String}=["left", "center"],
+    fillcolor=RGB(1, 1, 1),
+    linecolor=RGB(0, 0, 0),
+    headertextsize::Number=6,
     headertextfont::AbstractString="Helvetica",
     headertextcolor="black",
-    #headertextalignment::AbstractString=["left", "center"]
-    celltextsize::Number=17,
+    headertextalignment::Vector{String}=["left", "center"],
+    headerfillcolor="RGB(0, 0, 1)",
+    celltextsize::Number=6,
     celltextfont::AbstractString="Helvetica",
     celltextcolor="black",
-    #celltextalignment::AbstractString=["left", "center"]
-)
+    celltextalignment::Vector{String}=["left", "center"],
+    cellfillcolor=RGB(1, 1, 1))
 
     plot(
+        Layout(
+            #width=xMAXIMUM_WIDTH,
+            #height=yMAXIMUM_HEIGHT,
+            xaxis=attr(
+                range=[
+                    xMINIMUM_WIDTH,
+                    xMAXIMUM_WIDTH
+                ],
+                showgrid=false
+            ),
+            yaxis=attr(
+                range=[
+                    yMINIMUM_HEIGHT,
+                    yMAXIMUM_HEIGHT
+                ],
+                showgrid=false
+            ), plot_bgcolor=plot_bgcolor = transparent_bg ? RGBA(0, 0, 0, 0) : RGBA(1, 1, 1, 1)
+        ),
         table(
             header=attr(
+                line_color=linecolor,
+                fill_color=  
+                if !isempty(fillcolor) && !isempty(headerfillcolor)
+                    headerfillcolor
+                elseif !isempty(fillcolor) && isempty(headerfillcolor)
+                    fillcolor
+                elseif isempty(fillcolor) && !isempty(headerfillcolor)
+                    headerfillcolor
+                else
+                    fillcolor
+                end,
+                align=
+                if !isempty(textalignment) && !isempty(headertextalignment)
+                    headertextalignment
+                elseif !isempty(textalignment) && isempty(headertextalignment)
+                    textalignment
+                elseif isempty(textalignment) && !isempty(headertextalignment)
+                    headertextalignment
+                else
+                    textalignment
+                end,
+                font=attr(
+                    color=
+                    if !isempty(textcolor) && !isempty(headertextcolor)
+                        headertextcolor
+                    elseif !isempty(textcolor) && isempty(headertextcolor)
+                        textcolor
+                    elseif isempty(textcolor) && !isempty(headertextcolor)
+                        headertextcolor
+                    else
+                        textcolor
+                    end,
+                    font_family=
+                    if !isempty(textfont) && !isempty(headertextfont)
+                        headertextfont
+                    elseif !isempty(textfont) && isempty(headertextfont)
+                        textfont
+                    elseif isempty(textfont) && !isempty(headertextfont)
+                        headertextfont
+                    else
+                        textfont
+                    end,
+                    size=
+                    if !isempty(textsize) && !isempty(headertextsize)
+                        headertextsize
+                    elseif !isempty(textsize) && isempty(headertextsize)
+                        textsize
+                    elseif isempty(textsize) && !isempty(headertextsize)
+                        headertextsize
+                    else
+                        textsize
+                    end
+                ),
                 values=[
-                    "<b>Number</b>", 
-                    "<b>Item</b>", 
-                    "<b>Recommendation</b>", 
-                    "<b>Item Source</b>", 
+                    "<b>Number</b>",
+                    "<b>Item</b>",
+                    "<b>Recommendation</b>",
+                    "<b>Item Source</b>",
                     "<b>Additional Guidance</b>",
-                    "<b>Yes/No/NA</b>", 
+                    "<b>Yes/No/NA</b>",
                     "<b>Comments or location in manuscript</b>"
                 ],
-                line_color=RGB(
-                    0, 0, 0
-                ),
-                fill_color=RGB(
-                    1, 1, 1
-                ),
-                align=[
-                    "left", 
-                    "center"
-                ],
-                font=attr(
-                    color=textcolor,
-                    font_family=textfont,
-                    size=textsize
-                )
             ),
             cells=attr(
+                line_color=linecolor,
+                fill_color=
+                if !isempty(fillcolor) && !isempty(cellfillcolor)
+                    cellfillcolor
+                elseif !isempty(fillcolor) && isempty(cellfillcolor)
+                    fillcolor
+                elseif isempty(fillcolor) && !isempty(cellfillcolor)
+                    cellfillcolor
+                else
+                    fillcolor
+                end,
+                align=
+                if !isempty(textalignment) && !isempty(celltextalignment)
+                    celltextalignment
+                elseif !isempty(textalignment) && isempty(celltextalignment)
+                    textalignment
+                elseif isempty(textalignment) && !isempty(celltextalignment)
+                    celltextalignment
+                else
+                    textalignment
+                end,
+                font=attr(
+                    color=
+                    if !isempty(textcolor) && !isempty(celltextcolor)
+                        celltextcolor
+                    elseif !isempty(textcolor) && isempty(celltextcolor)
+                        textcolor
+                    elseif isempty(textcolor) && !isempty(celltextcolor)
+                        celltextcolor
+                    else
+                        textcolor
+                    end,
+                    font_family=
+                    if !isempty(textfont) && !isempty(celltextfont)
+                        celltextfont
+                    elseif !isempty(textfont) && isempty(celltextfont)
+                        textfont
+                    elseif isempty(textfont) && !isempty(celltextfont)
+                        celltextfont
+                    else
+                        textfont
+                    end,
+                    size=
+                    if !isempty(textsize) && !isempty(celltextsize)
+                        celltextsize
+                    elseif !isempty(textsize) && isempty(celltextsize)
+                        textsize
+                    elseif isempty(textsize) && !isempty(celltextsize)
+                        celltextsize
+                    else
+                        textsize
+                    end
+                ),
                 values=[
                     [   # NUMBER
                         "<b>Abstract</b>", 
@@ -591,44 +703,8 @@ function checklist(
                         "",
                         ""
                     ]
-                ],
-                line_color=RGB(
-                    0, 0, 0
-                ),
-                fill_color=RGB(
-                    1, 1, 1
-                ),
-                align=[
-                    "left", 
-                    "center"
-                ],
-                font=attr(
-                    color=textcolor,
-                    font_family=textfont,
-                    size=textsize
-                ),
-              # format=[]
+                ]
             )
-        ),
-        Layout(
-            #width=xMAXIMUM_WIDTH,
-            #height=yMAXIMUM_HEIGHT,
-            xaxis=attr(
-                range=[
-                    xMINIMUM_WIDTH, 
-                    xMAXIMUM_WIDTH
-                ],
-                showgrid=false
-            ),
-            yaxis=attr(
-                range=[
-                    yMINIMUM_HEIGHT, 
-                    yMAXIMUM_HEIGHT
-                ],
-                showgrid=false
-            ),
-            
-            plot_bgcolor=plot_bgcolor = transparent_bg ? RGBA(0, 0, 0, 0) : RGBA(1, 1, 1, 1)
         )
     )
 end
