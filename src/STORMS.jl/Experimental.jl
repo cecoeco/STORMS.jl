@@ -44,14 +44,14 @@ const LINE3_TEXT_PADDING_BOTTOM_3LINED_BOX_EXPERIMENTAL::Float64 = HEIGHT_FOR_BO
 function experimental(
     experimental_data::AbstractString="docs/experimental.csv",
     transparent_bg::Bool=false,
-    topboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
-    leftboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
-    rightboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
+    topboxcolor::Union{AbstractString, Number}=RGBA(0.0, 0.0, 0.0, 1.0),
+    leftboxcolor::Union{AbstractString, Number}=RGBA(0.0, 0.0, 0.0, 1.0),
+    rightboxcolor::Union{AbstractString, Number}=RGBA(0.0, 0.0, 0.0, 1.0),
     textsize::Number=15,
     textfont::AbstractString="Helvetica",
-    textcolor="black",
+    textcolor::Union{AbstractString, Number}="black",
     arrowheadshape::Int64=2,
-    arrowcolor="black",
+    arrowcolor::Union{AbstractString, Number}="black",
     arrowheadsize::Number=1)
 
     data = CSV.read(experimental_data, DataFrame)

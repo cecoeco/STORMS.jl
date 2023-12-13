@@ -38,14 +38,14 @@ const LINE3_TEXT_PADDING_BOTTOM_3LINED_BOX_OBSERVATIONAL::Float64 = HEIGHT_FOR_B
 function observational(
     observational_data::AbstractString="docs/observational.csv",
     transparent_bg::Bool=false,
-    topboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
-    leftboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
-    rightboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
+    topboxcolor::Union{AbstractString, Number}=RGBA(0.0, 0.0, 0.0, 1.0), #::Float64=RGBA(0.0, 0.0, 0.0, 1.0),
+    leftboxcolor::Union{AbstractString, Number}=RGBA(0.0, 0.0, 0.0, 1.0),
+    rightboxcolo::Union{AbstractString, Number}=RGBA(0.0, 0.0, 0.0, 1.0),
     textsize::Number=17,
     textfont::AbstractString="Helvetica",
-    textcolor="black",
+    textcolor::Union{AbstractString, Number}="black",
     arrowheadshape::Int64=2,
-    arrowcolor="black",
+    arrowcolor::Union{AbstractString, Number}="black",
     arrowheadsize::Number=1)
 
     data = CSV.read(observational_data, DataFrame)

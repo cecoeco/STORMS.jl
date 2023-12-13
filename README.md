@@ -6,7 +6,7 @@
     </center>
 </div>
 
-STORMS.jl :petri_dish: is a Julia package :package: and Genie app :genie_woman: based on the <i><b>S</b>trengthening <b>T</b>he <b>O</b>rganization and <b>R</b>eporting of <b>M</b>icrobiome <b>S</b>tudies</i> (STORMS) checklist and analytical sample size flowcharts ([Mirzayi et al., 2021](https://doi.org/10.5281/zenodo.5714305)).
+STORMS.jl :dna: is a Julia package :package: and web application  :spider_web: built using the [Dash framework](https://dash.plotly.com/julia). Based on the <i><b>S</b>trengthening <b>T</b>he <b>O</b>rganization and <b>R</b>eporting of <b>M</b>icrobiome <b>S</b>tudies</i> (STORMS) checklist and analytical sample size flowcharts ([Mirzayi et al., 2021](https://doi.org/10.5281/zenodo.5714305)).
 
 <div align="center">
     <center>
