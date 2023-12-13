@@ -10,20 +10,20 @@ function checklist(
     transparent_bg::Bool=false,
     textsize::Number=6,
     textfont::AbstractString="Helvetica",
-    textcolor="black",
+    textcolor::Union{AbstractString,Number}="black",
     textalignment::Vector{String}=["left", "center"],
-    fillcolor=RGB(1, 1, 1),
-    linecolor=RGB(0, 0, 0),
+    fillcolor::Union{AbstractString, Number}=RGB(1, 1, 1),
+    linecolor::Union{AbstractString, Number}=RGB(0, 0, 0),
     headertextsize::Number=6,
     headertextfont::AbstractString="Helvetica",
-    headertextcolor="black",
+    headertextcolor::Union{AbstractString, Number}="black",
     headertextalignment::Vector{String}=["left", "center"],
-    headerfillcolor="RGB(0, 0, 1)",
+    headerfillcolor::Union{AbstractString, Number}="RGB(0, 0, 1)",
     celltextsize::Number=6,
     celltextfont::AbstractString="Helvetica",
-    celltextcolor="black",
+    celltextcolor::Union{AbstractString,Number}="black",
     celltextalignment::Vector{String}=["left", "center"],
-    cellfillcolor=RGB(1, 1, 1))
+    cellfillcolor::Union{AbstractString,Number}=RGB(1, 1, 1))
 
     plot(
         Layout(

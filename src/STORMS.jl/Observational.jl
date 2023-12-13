@@ -38,15 +38,16 @@ const LINE3_TEXT_PADDING_BOTTOM_3LINED_BOX_OBSERVATIONAL::Float64 = HEIGHT_FOR_B
 function observational(
     observational_data::AbstractString="docs/observational.csv",
     transparent_bg::Bool=false,
-    topboxcolor::Union{AbstractString, Number}=RGBA(0.0, 0.0, 0.0, 1.0), #::Float64=RGBA(0.0, 0.0, 0.0, 1.0),
-    leftboxcolor::Union{AbstractString, Number}=RGBA(0.0, 0.0, 0.0, 1.0),
-    rightboxcolo::Union{AbstractString, Number}=RGBA(0.0, 0.0, 0.0, 1.0),
+    topboxcolor="lightblue",
+    leftboxcolor="lightblue",
+    rightboxcolor=RGBA(0.0, 0.0, 0.0, 1.0),
     textsize::Number=17,
     textfont::AbstractString="Helvetica",
-    textcolor::Union{AbstractString, Number}="black",
+    textcolor="black",
     arrowheadshape::Int64=2,
-    arrowcolor::Union{AbstractString, Number}="black",
-    arrowheadsize::Number=1)
+    arrowcolor="black",
+    arrowheadsize::Number=1
+)
 
     data = CSV.read(observational_data, DataFrame)
 
@@ -92,7 +93,6 @@ function observational(
             y=y0_ROW6_OBSERVATIONAL
         )
     )
-
     box_coordinates = Dict(
         1 => (
             x0=box_origin[1].x,
@@ -155,39 +155,6 @@ function observational(
             y1=box_origin[10].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         )
     )
-
-    boxes = []
-    for i in 1:10
-        box = rect(
-            x0=box_coordinates[i].x0,
-            y0=box_coordinates[i].y0,
-            x1=box_coordinates[i].x1,
-            y1=box_coordinates[i].y1,
-            fillcolor=if i == 1
-                topboxcolor
-            elseif i % 2 == 0
-                leftboxcolor
-            elseif i % 2 != 0 && i != 1
-                rightboxcolor
-            else
-                RGBA(0.0, 0.0, 0.0, 1.0)
-            end,
-            line=attr(
-                color=if i == 1
-                    "black"
-                elseif i % 2 == 0
-                    "black"
-                elseif i % 2 != 0 && i != 1
-                    "black"
-                else
-                    "black"
-                end,
-                width=1
-            )
-        )
-        push!(boxes, box)
-    end
-
     arrow_coordinates = Dict(
         :two_to_three => (
             x0=box_origin[2].x + BOXWIDTH_OBSERVATIONAL / 2,
@@ -238,29 +205,6 @@ function observational(
             y1=box_origin[10].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         )
     )
-
-    arrows = []
-    for (arrow_name, coordinates) in arrow_coordinates
-        arrow = attr(
-            axref="x",
-            ayref="y",
-            ax=coordinates.x0,
-            ay=coordinates.y0,
-            xref="x",
-            yref="y",
-            x=coordinates.x1,
-            y=coordinates.y1,
-            showarrow=true,
-            arrowwidth=2,
-            arrowside="end",
-            hovertext=arrow_name,
-            arrowhead=arrowheadshape,
-            arrowcolor=arrowcolor,
-            arrowsize=arrowheadsize
-        )
-        push!(arrows, arrow)
-    end
-
     text_data = Dict(
         :box1_line1 => (
             "<b>$(data[1, :box_lab])</b>"
@@ -323,7 +267,6 @@ function observational(
             "<i>n</i> = $(data[11, :n])"
         )
     )
-
     text_coordinates = Dict(
         :box1_line1 => (
             x=box_origin[1].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,
@@ -407,42 +350,318 @@ function observational(
         )
     )
 
-    text = scatter(
-        x=[text_coordinates[key].x for key in keys(text_coordinates)],
-        y=[text_coordinates[key].y for key in keys(text_coordinates)],
-        text=[text_data[key] for key in keys(text_data)],
-        mode="text",
-        textposition="right center",
-        textfont=attr(
-            family=textfont,
-            size=textsize,
-            color=textcolor
+    plot(
+        scatter(
+            x=[text_coordinates[key].x for key in keys(text_coordinates)],
+            y=[text_coordinates[key].y for key in keys(text_coordinates)],
+            text=[text_data[key] for key in keys(text_data)],
+            mode="text",
+            textposition="right center",
+            textfont=attr(
+                family=textfont,
+                size=textsize,
+                color=textcolor
+            )
+        ),
+        Layout(
+            xaxis=attr(
+                range=[xMINIMUM_OBSERVATIONAL, xMAXIMUM_OBSERVATIONAL],
+                showgrid=false,
+                ticks=false,
+                showticklabels=false
+            ),
+            yaxis=attr(
+                range=[yMINIMUM_OBSERVATIONAL, yMAXIMUM_OBSERVATIONAL],
+                showgrid=false,
+                ticks=false,
+                showticklabels=false
+            ),
+            width=xMAXIMUM_OBSERVATIONAL,
+            height=yMAXIMUM_OBSERVATIONAL,
+            margin=attr(t=0, r=0, b=0, l=0),
+            plot_bgcolor=transparent_bg ? RGBA(0, 0, 0, 0) : RGBA(1, 1, 1, 1),
+            shapes=[
+                rect(
+                    xref="x",
+                    yref="y",
+                    layer="below",
+                    x0=box_coordinates[1].x0,
+                    y0=box_coordinates[1].y0,
+                    x1=box_coordinates[1].x1,
+                    y1=box_coordinates[1].y1,
+                    fillcolor=topboxcolor,
+                    line=attr(
+                        color="black",
+                        width=1
+                    )
+                ),
+                rect(
+                    xref="x",
+                    yref="y",
+                    layer="below",
+                    x0=box_coordinates[2].x0,
+                    y0=box_coordinates[2].y0,
+                    x1=box_coordinates[2].x1,
+                    y1=box_coordinates[2].y1,
+                    fillcolor=leftboxcolor,
+                    line=attr(
+                        color="black",
+                        width=1
+                    )
+                ),
+                rect(
+                    xref="x",
+                    yref="y",
+                    layer="below",
+                    x0=box_coordinates[3].x0,
+                    y0=box_coordinates[3].y0,
+                    x1=box_coordinates[3].x1,
+                    y1=box_coordinates[3].y1,
+                    fillcolor=rightboxcolor,
+                    line=attr(
+                        color="black",
+                        width=1
+                    )
+                ),
+                rect(
+                    xref="x",
+                    yref="y",
+                    layer="below",
+                    x0=box_coordinates[4].x0,
+                    y0=box_coordinates[4].y0,
+                    x1=box_coordinates[4].x1,
+                    y1=box_coordinates[4].y1,
+                    fillcolor=leftboxcolor,
+                    line=attr(
+                        color="black",
+                        width=1
+                    )
+                ),
+                rect(
+                    xref="x",
+                    yref="y",
+                    layer="below",
+                    x0=box_coordinates[5].x0,
+                    y0=box_coordinates[5].y0,
+                    x1=box_coordinates[5].x1,
+                    y1=box_coordinates[5].y1,
+                    fillcolor=rightboxcolor,
+                    line=attr(
+                        color="black",
+                        width=1
+                    )
+                ),
+                rect(
+                    xref="x",
+                    yref="y",
+                    layer="below",
+                    x0=box_coordinates[6].x0,
+                    y0=box_coordinates[6].y0,
+                    x1=box_coordinates[6].x1,
+                    y1=box_coordinates[6].y1,
+                    fillcolor=leftboxcolor,
+                    line=attr(
+                        color="black",
+                        width=1
+                    )
+                ),
+                rect(
+                    xref="x",
+                    yref="y",
+                    layer="below",
+                    x0=box_coordinates[7].x0,
+                    y0=box_coordinates[7].y0,
+                    x1=box_coordinates[7].x1,
+                    y1=box_coordinates[7].y1,
+                    fillcolor=rightboxcolor,
+                    line=attr(
+                        color="black",
+                        width=1
+                    )
+                ),
+                rect(
+                    xref="x",
+                    yref="y",
+                    layer="below",
+                    x0=box_coordinates[8].x0,
+                    y0=box_coordinates[8].y0,
+                    x1=box_coordinates[8].x1,
+                    y1=box_coordinates[8].y1,
+                    fillcolor=leftboxcolor,
+                    line=attr(
+                        color="black",
+                        width=1
+                    )
+                ),
+                rect(
+                    xref="x",
+                    yref="y",
+                    layer="below",
+                    x0=box_coordinates[9].x0,
+                    y0=box_coordinates[9].y0,
+                    x1=box_coordinates[9].x1,
+                    y1=box_coordinates[9].y1,
+                    fillcolor=rightboxcolor,
+                    line=attr(
+                        color="black",
+                        width=1
+                    )
+                ),
+                rect(
+                    xref="x",
+                    yref="y",
+                    layer="below",
+                    x0=box_coordinates[10].x0,
+                    y0=box_coordinates[10].y0,
+                    x1=box_coordinates[10].x1,
+                    y1=box_coordinates[10].y1,
+                    fillcolor=leftboxcolor,
+                    line=attr(
+                        color="black",
+                        width=1
+                    )
+                )
+            ],
+            annotations=[
+                attr(
+                    axref="x",
+                    ayref="y",
+                    xref="x",
+                    yref="y",
+                    showarrow=true,
+                    ax=arrow_coordinates[:two_to_three].x0,
+                    ay=arrow_coordinates[:two_to_three].y0,
+                    x=arrow_coordinates[:two_to_three].x1,
+                    y=arrow_coordinates[:two_to_three].y1,
+                    arrowwidth=2,
+                    arrowside="end",
+                    hovertext="two_to_three",
+                    arrowhead=arrowheadshape,
+                    arrowcolor=arrowcolor,
+                    arrowsize=arrowheadsize
+                ),
+                attr(
+                    axref="x",
+                    ayref="y",
+                    xref="x",
+                    yref="y",
+                    showarrow=true,
+                    ax=arrow_coordinates[:two_to_four].x0,
+                    ay=arrow_coordinates[:two_to_four].y0,
+                    x=arrow_coordinates[:two_to_four].x1,
+                    y=arrow_coordinates[:two_to_four].y1,
+                    arrowwidth=2,
+                    arrowside="end",
+                    hovertext="two_to_four",
+                    arrowhead=arrowheadshape,
+                    arrowcolor=arrowcolor,
+                    arrowsize=arrowheadsize
+                ),
+                attr(
+                    axref="x",
+                    ayref="y",
+                    xref="x",
+                    yref="y",
+                    showarrow=true,
+                    ax=arrow_coordinates[:four_to_five].x0,
+                    ay=arrow_coordinates[:four_to_five].y0,
+                    x=arrow_coordinates[:four_to_five].x1,
+                    y=arrow_coordinates[:four_to_five].y1,
+                    arrowwidth=2,
+                    arrowside="end",
+                    hovertext="four_to_five",
+                    arrowhead=arrowheadshape,
+                    arrowcolor=arrowcolor,
+                    arrowsize=arrowheadsize
+                ),
+                attr(
+                    axref="x",
+                    ayref="y",
+                    xref="x",
+                    yref="y",
+                    showarrow=true,
+                    ax=arrow_coordinates[:four_to_six].x0,
+                    ay=arrow_coordinates[:four_to_six].y0,
+                    x=arrow_coordinates[:four_to_six].x1,
+                    y=arrow_coordinates[:four_to_six].y1,
+                    arrowwidth=2,
+                    arrowside="end",
+                    hovertext="four_to_six",
+                    arrowhead=arrowheadshape,
+                    arrowcolor=arrowcolor,
+                    arrowsize=arrowheadsize
+                ),
+                attr(
+                    axref="x",
+                    ayref="y",
+                    xref="x",
+                    yref="y",
+                    showarrow=true,
+                    ax=arrow_coordinates[:six_to_seven].x0,
+                    ay=arrow_coordinates[:six_to_seven].y0,
+                    x=arrow_coordinates[:six_to_seven].x1,
+                    y=arrow_coordinates[:six_to_seven].y1,
+                    arrowwidth=2,
+                    arrowside="end",
+                    hovertext="six_to_seven",
+                    arrowhead=arrowheadshape,
+                    arrowcolor=arrowcolor,
+                    arrowsize=arrowheadsize
+                ),
+                attr(
+                    axref="x",
+                    ayref="y",
+                    xref="x",
+                    yref="y",
+                    showarrow=true,
+                    ax=arrow_coordinates[:six_to_eight].x0,
+                    ay=arrow_coordinates[:six_to_eight].y0,
+                    x=arrow_coordinates[:six_to_eight].x1,
+                    y=arrow_coordinates[:six_to_eight].y1,
+                    arrowwidth=2,
+                    arrowside="end",
+                    hovertext="six_to_eight",
+                    arrowhead=arrowheadshape,
+                    arrowcolor=arrowcolor,
+                    arrowsize=arrowheadsize
+                ),
+                attr(
+                    axref="x",
+                    ayref="y",
+                    xref="x",
+                    yref="y",
+                    showarrow=true,
+                    ax=arrow_coordinates[:eight_to_nine].x0,
+                    ay=arrow_coordinates[:eight_to_nine].y0,
+                    x=arrow_coordinates[:eight_to_nine].x1,
+                    y=arrow_coordinates[:eight_to_nine].y1,
+                    arrowwidth=2,
+                    arrowside="end",
+                    hovertext="eight_to_nine",
+                    arrowhead=arrowheadshape,
+                    arrowcolor=arrowcolor,
+                    arrowsize=arrowheadsize
+                ),
+                attr(
+                    axref="x",
+                    ayref="y",
+                    xref="x",
+                    yref="y",
+                    showarrow=true,
+                    ax=arrow_coordinates[:eight_to_ten].x0,
+                    ay=arrow_coordinates[:eight_to_ten].y0,
+                    x=arrow_coordinates[:eight_to_ten].x1,
+                    y=arrow_coordinates[:eight_to_ten].y1,
+                    arrowwidth=2,
+                    arrowside="end",
+                    hovertext="eight_to_ten",
+                    arrowhead=arrowheadshape,
+                    arrowcolor=arrowcolor,
+                    arrowsize=arrowheadsize
+                )
+            ]
         )
     )
-
-    layout = Layout(
-        xaxis=attr(
-            range=[xMINIMUM_OBSERVATIONAL, xMAXIMUM_OBSERVATIONAL],
-            showgrid=false,
-            ticks=false,
-            showticklabels=false
-        ),
-        yaxis=attr(
-            range=[yMINIMUM_OBSERVATIONAL, yMAXIMUM_OBSERVATIONAL],
-            showgrid=false,
-            ticks=false,
-            showticklabels=false
-        ),
-        width=xMAXIMUM_OBSERVATIONAL,
-        height=yMAXIMUM_OBSERVATIONAL,
-        margin=attr(t=0, r=0, b=0, l=0),
-        plot_bgcolor=transparent_bg ? RGBA(0, 0, 0, 0) : RGBA(1, 1, 1, 1),
-        shapes=boxes,
-        annotations=arrows
-    )
-
-    plot(text, layout)
-
 end
 
 observational()
