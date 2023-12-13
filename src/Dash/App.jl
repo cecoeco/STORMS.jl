@@ -1,10 +1,10 @@
-# src/App.jl
 using Dash
 
-include("src/STORMS/STORMS.jl")
-using .STORMS
+include("../STORMS.jl/STORMS.jl")
 
-app = dash(#=external_stylesheets=[".css"]=#)
+#external_stylesheets = ["src/Dash/assets/styles.css"]
+
+app = dash(#=external_stylesheets=external_stylesheets=#)
 
 app.layout = html_div() do
     html_h1("Hello Dash"),
