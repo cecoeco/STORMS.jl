@@ -1,4 +1,8 @@
 using Dash
+using DataFrames
+using CSV
+using Colors
+using PlotlyJS
 
 include("../STORMS.jl/Observational.jl")
 include("../STORMS.jl/Experimental.jl")
@@ -51,71 +55,131 @@ obeservational_data = DataFrame(
     box_var=box_var_observational, 
     n=n_observational
 )
-box_num_experimental = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,11, 12
-]
-box_lab_experimental = [
-    "Experimental",
-    "Expression of interest",
-    "Assessment for eligibility:",
-    "Screened",
-    "Excluded:",
-    "Recruited and randomized",
-    "Group 1",
-    "Group 2",
-    "Drop out:",
-    "Completed trial",
-    "Excluded:",
-    "Excluded:",
-    "Total samples included in the analysis"
-]
-box_var_experimental = [
-    nothing,
-    nothing,
-    "xxxx",
-    nothing,
-    "xxxx",
-    nothing,
-    nothing,
-    nothing,
-    "xxxx",
-    nothing,
-    "Lack of sequencing",
-    "Low number of reads",
-    nothing
-]
-n_experimental = [
-    nothing,
-    "xx",
-    "xx",
-    "xx",
-    "xx",
-    "xx",
-    "xx",
-    "xx",
-    "xx",
-    "xx",
-    "xx",
-    "xx",
-    "xx"
-]
-experimental_data = DataFrame(
-    box_num=box_num_experimental,
-    box_lab=box_lab_experimental,
-    box_var=box_var_experimental,
-    n=n_experimental
-)
-
 app = dash(
     external_stylesheets=["src/Dash/assets/styles.css"],
     
 )
 app.title = "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
 app.layout = html_div() do
-    html_h1(
+    html_div(
         id="title",
-        "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
+        html_h1(
+            id="title",
+            "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
+        )
     ),
     html_div(
+        id="description",
+        html_h2(
+            id="description",
+        )
+        html_p(
+            id="description",
+        )
+    ),
+    html_div(
+        id="settings",
+        html_div(
+            id="box settings",
+            html_div(
+                id="topboxcolor",
+                dcc_input(
+                    id="topboxcolor",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            )
+            html_div(
+                id="leftboxcolor",
+                dcc_input(
+                    id="leftboxcolor",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            )
+            html_div(
+                id="rightboxcolor",
+                dcc_input(
+                    id="rightboxcolor",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            )
+        )
+        html_div(
+            id="arrow settings",
+            html_div(
+                id="arrowheadshape",
+                dcc_dropdown(
+                    id="arrowheadshape",
+                    options = [
+                        (label = "", value = ""),
+                        (label = "", value = ""),
+                        (label = "", value = "")
+                    ]
+                )
+            )
+            html_div(
+                id="arrowcolor",
+                dcc_input(
+                    id="arrowcolor",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            )
+            html_div(
+                id="arrowheadsize",
+                    dcc_dropdown(
+                    id="arrowheadsize",
+                    options = [
+                        (label = "", value = ""),
+                        (label = "", value = ""),
+                        (label = "", value = "")
+                    ]
+                )
+            )
+        )
+        html_div(
+            id="text settings",
+            html_div(
+                id="textsize",
+                dcc_dropdown(
+                    id="textsize",
+                    options=[
+                        (label="", value=""),
+                        (label="", value=""),
+                        (label="", value="")
+                    ]
+                )
+            )
+            html_div(
+                id="textfont",
+                dcc_dropdown(
+                    id="textfont",
+                    options=[
+                        (label="", value=""),
+                        (label="", value=""),
+                        (label="", value="")
+                    ]
+                )
+            )
+            html_div(
+                id="textcolor".
+                dcc_input(
+                    id="textcolor",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            )
+        )
+    ),
+    html_div(
+        id="save settings",
         html_div(
             dcc_radioitems(
                 id="download format",
