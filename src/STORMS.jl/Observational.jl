@@ -93,6 +93,7 @@ function observational(
             y=y0_ROW6_OBSERVATIONAL
         )
     )
+
     box_coordinates = Dict(
         1 => (
             x0=box_origin[1].x,
@@ -155,6 +156,7 @@ function observational(
             y1=box_origin[10].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         )
     )
+
     arrow_coordinates = Dict(
         :two_to_three => (
             x0=box_origin[2].x + BOXWIDTH_OBSERVATIONAL / 2,
@@ -205,6 +207,7 @@ function observational(
             y1=box_origin[10].y + HEIGHT_FOR_BOXES_WITH_2_LINES_OF_TEXT_OBSERVATIONAL
         )
     )
+
     text_data = Dict(
         :box1_line1 => (
             "<b>$(data[1, :box_lab])</b>"
@@ -267,6 +270,7 @@ function observational(
             "<i>n</i> = $(data[11, :n])"
         )
     )
+    
     text_coordinates = Dict(
         :box1_line1 => (
             x=box_origin[1].x + SHIFT_TEXT_RIGHT_BY_A_NUMBER_OBSERVATIONAL,

@@ -8,97 +8,26 @@ const yMAXIMUM_HEIGHT::Int64 = 600
 
 function checklist(
     transparent_bg::Bool=false,
-    textsize::Number=6,
-    textfont::AbstractString="Helvetica",
-    textcolor::Union{AbstractString,Number}="black",
-    textalignment::Vector{String}=["left", "center"],
-    fillcolor::Union{AbstractString, Number}=RGB(1, 1, 1),
-    linecolor::Union{AbstractString, Number}=RGB(0, 0, 0),
-    headertextsize::Number=6,
+    #textsize::Number=6,
+    #textfont::AbstractString="Helvetica",
+    #textcolor="black",
+    #textalignment::Vector{String}=["left", "center"],
+    linecolor="black",
+    headertextsize::Number=17,
     headertextfont::AbstractString="Helvetica",
-    headertextcolor::Union{AbstractString, Number}="black",
+    headertextcolor="black",
     headertextalignment::Vector{String}=["left", "center"],
-    headerfillcolor::Union{AbstractString, Number}="RGB(0, 0, 1)",
-    celltextsize::Number=6,
+    headerfillcolor="white",
+    celltextsize::Number=17,
     celltextfont::AbstractString="Helvetica",
-    celltextcolor::Union{AbstractString,Number}="black",
-    celltextalignment::Vector{String}=["left", "center"],
-    cellfillcolor::Union{AbstractString,Number}=RGB(1, 1, 1))
+    celltextcolor="black",
+    cellfillcolor="white",
+    celltextalignment::Vector{String}=["left", "center"]
+)
 
     plot(
-        Layout(
-            #width=xMAXIMUM_WIDTH,
-            #height=yMAXIMUM_HEIGHT,
-            xaxis=attr(
-                range=[
-                    xMINIMUM_WIDTH,
-                    xMAXIMUM_WIDTH
-                ],
-                showgrid=false
-            ),
-            yaxis=attr(
-                range=[
-                    yMINIMUM_HEIGHT,
-                    yMAXIMUM_HEIGHT
-                ],
-                showgrid=false
-            ), plot_bgcolor=plot_bgcolor = transparent_bg ? RGBA(0, 0, 0, 0) : RGBA(1, 1, 1, 1)
-        ),
         table(
             header=attr(
-                line_color=linecolor,
-                fill_color=  
-                if !isempty(fillcolor) && !isempty(headerfillcolor)
-                    headerfillcolor
-                elseif !isempty(fillcolor) && isempty(headerfillcolor)
-                    fillcolor
-                elseif isempty(fillcolor) && !isempty(headerfillcolor)
-                    headerfillcolor
-                else
-                    fillcolor
-                end,
-                align=
-                if !isempty(textalignment) && !isempty(headertextalignment)
-                    headertextalignment
-                elseif !isempty(textalignment) && isempty(headertextalignment)
-                    textalignment
-                elseif isempty(textalignment) && !isempty(headertextalignment)
-                    headertextalignment
-                else
-                    textalignment
-                end,
-                font=attr(
-                    color=
-                    if !isempty(textcolor) && !isempty(headertextcolor)
-                        headertextcolor
-                    elseif !isempty(textcolor) && isempty(headertextcolor)
-                        textcolor
-                    elseif isempty(textcolor) && !isempty(headertextcolor)
-                        headertextcolor
-                    else
-                        textcolor
-                    end,
-                    font_family=
-                    if !isempty(textfont) && !isempty(headertextfont)
-                        headertextfont
-                    elseif !isempty(textfont) && isempty(headertextfont)
-                        textfont
-                    elseif isempty(textfont) && !isempty(headertextfont)
-                        headertextfont
-                    else
-                        textfont
-                    end,
-                    size=
-                    if !isempty(textsize) && !isempty(headertextsize)
-                        headertextsize
-                    elseif !isempty(textsize) && isempty(headertextsize)
-                        textsize
-                    elseif isempty(textsize) && !isempty(headertextsize)
-                        headertextsize
-                    else
-                        textsize
-                    end
-                ),
                 values=[
                     "<b>Number</b>",
                     "<b>Item</b>",
@@ -108,68 +37,23 @@ function checklist(
                     "<b>Yes/No/NA</b>",
                     "<b>Comments or location in manuscript</b>"
                 ],
+                line_color=linecolor,
+                fill_color=headerfillcolor,
+                align=headertextalignment,
+                font=attr(
+                    color=headertextcolor,
+                    font_family=headertextfont,
+                    size=headertextsize
+                )
             ),
             cells=attr(
-                line_color=linecolor,
-                fill_color=
-                if !isempty(fillcolor) && !isempty(cellfillcolor)
-                    cellfillcolor
-                elseif !isempty(fillcolor) && isempty(cellfillcolor)
-                    fillcolor
-                elseif isempty(fillcolor) && !isempty(cellfillcolor)
-                    cellfillcolor
-                else
-                    fillcolor
-                end,
-                align=
-                if !isempty(textalignment) && !isempty(celltextalignment)
-                    celltextalignment
-                elseif !isempty(textalignment) && isempty(celltextalignment)
-                    textalignment
-                elseif isempty(textalignment) && !isempty(celltextalignment)
-                    celltextalignment
-                else
-                    textalignment
-                end,
-                font=attr(
-                    color=
-                    if !isempty(textcolor) && !isempty(celltextcolor)
-                        celltextcolor
-                    elseif !isempty(textcolor) && isempty(celltextcolor)
-                        textcolor
-                    elseif isempty(textcolor) && !isempty(celltextcolor)
-                        celltextcolor
-                    else
-                        textcolor
-                    end,
-                    font_family=
-                    if !isempty(textfont) && !isempty(celltextfont)
-                        celltextfont
-                    elseif !isempty(textfont) && isempty(celltextfont)
-                        textfont
-                    elseif isempty(textfont) && !isempty(celltextfont)
-                        celltextfont
-                    else
-                        textfont
-                    end,
-                    size=
-                    if !isempty(textsize) && !isempty(celltextsize)
-                        celltextsize
-                    elseif !isempty(textsize) && isempty(celltextsize)
-                        textsize
-                    elseif isempty(textsize) && !isempty(celltextsize)
-                        celltextsize
-                    else
-                        textsize
-                    end
-                ),
                 values=[
                     [   # NUMBER
-                        "<b>Abstract</b>", 
-                        "1.0", 
-                        "1.1", 
-                        "1.2", 
-                        "1.3", 
+                        "<b>Abstract</b>",
+                        "1.0",
+                        "1.1",
+                        "1.2",
+                        "1.3",
                         "<b>Introduction</b>",
                         "2.0",
                         "2.1",
@@ -341,7 +225,7 @@ function checklist(
                         "State the laboratory/center where laboratory work was done.",
                         "State the body site(s) sampled from and how specimens were collected.",
                         "Describe how samples were stored and shipped to the laboratory.",
-                        "Describe how the laboratory stored samples, including time between collection and storage and any preservation buffers or refrigeration used.",                        
+                        "Describe how the laboratory stored samples, including time between collection and storage and any preservation buffers or refrigeration used.",
                         "Provide DNA extraction method, including kit and version if relevant.",
                         "Describe whether human DNA sequence depletion or enrichment of microbial or viral DNA was performed.",
                         "Provide primer selection and DNA amplification methods as well as variable region sequenced (if applicable).",
@@ -389,7 +273,7 @@ function checklist(
                         "Discuss the generalisability (external validity) of the study results.",
                         "Describe potential future research or ongoing research based on the study's findings.",
                         "",
-                        "Give the source of funding and the role of the funders for the present study and, if applicable, for the original study on which the present article is based.", 
+                        "Give the source of funding and the role of the funders for the present study and, if applicable, for the original study on which the present article is based.",
                         "Include acknowledgements of those who contributed to the research but did not meet critera for authorship.",
                         "Include a conflicts of interest statement.",
                         "Indicate where supplements may be accessed and what materials they contain.",
@@ -703,8 +587,39 @@ function checklist(
                         "",
                         ""
                     ]
-                ]
+                ],
+                line_color=linecolor,
+                fill_color=cellfillcolor,
+                align=celltextalignment,
+                font=attr(
+                    color=celltextcolor,
+                    font_family=celltextfont,
+                    size=celltextsize
+                )
             )
+        ),
+        Layout(
+            #width=xMAXIMUM_WIDTH,
+            #height=yMAXIMUM_HEIGHT,
+            xaxis=attr(
+                range=[
+                    xMINIMUM_WIDTH,
+                    xMAXIMUM_WIDTH
+                ],
+                showgrid=false
+            ),
+            yaxis=attr(
+                range=[
+                    yMINIMUM_HEIGHT,
+                    yMAXIMUM_HEIGHT
+                ],
+                showgrid=false
+            ),
+            plot_bgcolor=if transparent_bg == true
+                RGBA(0, 0, 0, 0)
+            else
+                RGBA(1, 1, 1, 1)
+            end
         )
     )
 end
