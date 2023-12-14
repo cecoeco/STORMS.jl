@@ -106,10 +106,10 @@ experimental_data = DataFrame(
 )
 
 app = dash(
-    #=external_stylesheets=["src/Dash/assets/styles.css"],
-    =#
+    external_stylesheets=["src/Dash/assets/styles.css"],
+    
 )
-
+app.title = "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
 app.layout = html_div() do
     html_h1("Hello Dash"),
     html_div("Dash: A web application framework for your data."),
