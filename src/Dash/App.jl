@@ -111,14 +111,157 @@ app = dash(
 )
 app.title = "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
 app.layout = html_div() do
-    html_h1("Hello Dash"),
-    html_div("Dash: A web application framework for your data."),
-    dcc_graph(
-        id = "checklist",
-        figure = (
-            checklist()
+    html_h1(
+        id="title",
+        "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
+    ),
+    html_div(
+        html_div(
+            dcc_radioitems(
+                id="download format",
+                options=[
+                    
+                ],
+                value=""
+            )
         )
-    )
+        html_div(
+            html_button(
+                id="button",
+                "download"
+            )
+        )
+    ),
+    html_div(className="") do 
+        html_div(className="")
+        dcc_graph(
+            id = "observational",
+            figure = (
+                observational(
+                    #observational_data=obeservational_data
+                )
+            )
+        ),
+        html_div(className="") do 
+            html_div(
+                id="Expression of interest number",
+                dcc_input(
+                    id="Expression of interest number",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            ),
+            html_div(
+                id="Assessment for eligibility: variable",
+                dcc_input(
+                    id="Assessment for eligibility: variable",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            ),
+            html_div(
+                id="Assessment for eligibility: number",
+                dcc_input(
+                    id="Assessment for eligibility: number",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            ),
+            html_div(
+                id="Screened number",
+                dcc_input(
+                    id="Screened number",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            ),
+            html_div(
+                id="Excluded: variable",   
+                dcc_input(
+                    id="Excluded: variable",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            ),
+            html_div(
+                id="Excluded: number",
+                dcc_input(
+                    id="Excluded: number",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            ),
+            html_div(
+                id="Recruited number",
+                dcc_input(
+                    id="Recruited number",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            ),
+            html_div(
+                id="Drop out: variable",
+                dcc_input(
+                    id="Drop out: variable",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            ),
+            html_div(
+                id="Drop out: number",
+                dcc_input(
+                    id="Drop out: number",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            ),
+            html_div(
+                id="Data available for analysis number",
+                dcc_input(
+                    id="Data available for analysis number",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            ),
+            html_div(
+                id="Lack of sequencing number",
+                dcc_input(
+                    id="Lack of sequencing number",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            ),
+            html_div(
+                id="Low number of reads number",
+                dcc_input(
+                    id="Low number of reads number",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            ),
+            html_div(
+                id="Total samples included in the analysis number",
+                dcc_input(
+                    id="Total samples included in the analysis number",
+                    placeholder="Enter a value...",
+                    type="text",
+                    value=""
+                )
+            )
+        end
+    end
 end
 
 run_server(app, "0.0.0.0", debug=true) 
