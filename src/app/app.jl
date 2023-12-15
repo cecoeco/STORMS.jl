@@ -1,10 +1,9 @@
 using Dash
 
-include("../STORMS.jl/Observational.jl")
-include("../Dash/data.jl")
-
 app = dash(
-    external_stylesheets=["src/Dash/assets/styles.css"]
+    #assets_folder="/Dash/assets",
+    #external_scripts=["/Dash/assets/script.js"],
+    #external_stylesheets=["/Dash/assets/styles.css"]
 )
 app.title = "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
 app.layout = html_div() do
@@ -28,7 +27,7 @@ app.layout = html_div() do
         html_div(id="box settings") do
             html_div(id="topboxcolor") do
                 dcc_input(
-                    id="topboxcolor",
+                    id="topboxcolor dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -36,7 +35,7 @@ app.layout = html_div() do
             end
             html_div(id="leftboxcolor") do
                 dcc_input(
-                    id="leftboxcolor",
+                    id="leftboxcolor dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -44,7 +43,7 @@ app.layout = html_div() do
             end
             html_div(id="rightboxcolor") do
                 dcc_input(
-                    id="rightboxcolor",
+                    id="rightboxcolor dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -54,7 +53,7 @@ app.layout = html_div() do
         html_div(id="arrow settings") do
             html_div(id="arrowheadshape") do
                 dcc_dropdown(
-                    id="arrowheadshape",
+                    id="arrowheadshape dcc_dropdown",
                     options = [
                         (label = "", value = ""),
                         (label = "", value = ""),
@@ -64,7 +63,7 @@ app.layout = html_div() do
             end
             html_div(id="arrowcolor") do
                 dcc_input(
-                    id="arrowcolor",
+                    id="arrowcolor dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -72,7 +71,7 @@ app.layout = html_div() do
             end
             html_div(id="arrowheadsize") do
                     dcc_dropdown(
-                    id="arrowheadsize",
+                    id="arrowheadsize dcc_dropdown",
                     options = [
                         (label = "", value = ""),
                         (label = "", value = ""),
@@ -84,7 +83,7 @@ app.layout = html_div() do
         html_div(id="text settings") do
             html_div(id="textsize") do
                 dcc_dropdown(
-                    id="textsize",
+                    id="textsize dcc_dropdown",
                     options=[
                         (label="", value=""),
                         (label="", value=""),
@@ -94,7 +93,7 @@ app.layout = html_div() do
             end
             html_div(id="textfont") do
                 dcc_dropdown(
-                    id="textfont",
+                    id="textfont dcc_dropdown",
                     options=[
                         (label="", value=""),
                         (label="", value=""),
@@ -104,7 +103,7 @@ app.layout = html_div() do
             end
             html_div(id="textcolor") do
                 dcc_input(
-                    id="textcolor",
+                    id="textcolor dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -115,7 +114,7 @@ app.layout = html_div() do
     html_div(className="") do 
         html_div(className="")
         dcc_graph(
-            id = "observational",
+            id = "observational flowchart",
             figure = (
                 observational(
                     #observational_data=obeservational_data
@@ -125,7 +124,7 @@ app.layout = html_div() do
         html_div(className="") do 
             html_div(id="Expression of interest number") do
                 dcc_input(
-                    id="Expression of interest number",
+                    id="Expression of interest number dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -133,7 +132,7 @@ app.layout = html_div() do
             end
             html_div(id="Assessment for eligibility: variable") do
                 dcc_input(
-                    id="Assessment for eligibility: variable",
+                    id="Assessment for eligibility: variable dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -141,7 +140,7 @@ app.layout = html_div() do
             end
             html_div(id="Assessment for eligibility: number") do
                 dcc_input(
-                    id="Assessment for eligibility: number",
+                    id="Assessment for eligibility: number dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -149,7 +148,7 @@ app.layout = html_div() do
             end
             html_div(id="Screened number") do
                 dcc_input(
-                    id="Screened number",
+                    id="Screened number dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -157,7 +156,7 @@ app.layout = html_div() do
             end
             html_div(id="Excluded: variable") do  
                 dcc_input(
-                    id="Excluded: variable",
+                    id="Excluded: variable dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -165,7 +164,7 @@ app.layout = html_div() do
             end
             html_div(id="Excluded: number") do
                 dcc_input(
-                    id="Excluded: number",
+                    id="Excluded: number dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -173,7 +172,7 @@ app.layout = html_div() do
             end
             html_div(id="Recruited number") do
                 dcc_input(
-                    id="Recruited number",
+                    id="Recruited number dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -181,7 +180,7 @@ app.layout = html_div() do
             end
             html_div(id="Drop out: variable") do
                 dcc_input(
-                    id="Drop out: variable",
+                    id="Drop out: variable dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -189,7 +188,7 @@ app.layout = html_div() do
             end
             html_div(id="Drop out: number") do
                 dcc_input(
-                    id="Drop out: number",
+                    id="Drop out: number dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -197,7 +196,7 @@ app.layout = html_div() do
             end
             html_div(id="Data available for analysis number") do
                 dcc_input(
-                    id="Data available for analysis number",
+                    id="Data available for analysis number dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -205,7 +204,7 @@ app.layout = html_div() do
             end
             html_div(id="Lack of sequencing number") do
                 dcc_input(
-                    id="Lack of sequencing number",
+                    id="Lack of sequencing number dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -213,7 +212,7 @@ app.layout = html_div() do
             end
             html_div(id="Low number of reads number") do
                 dcc_input(
-                    id="Low number of reads number",
+                    id="Low number of reads number dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -221,7 +220,7 @@ app.layout = html_div() do
             end
             html_div(id="Total samples included in the analysis number") do
                 dcc_input(
-                    id="Total samples included in the analysis number",
+                    id="Total samples included in the analysis number dcc_input",
                     placeholder="Enter a value...",
                     type="text",
                     value=""
@@ -240,7 +239,7 @@ app.layout = html_div() do
         end
         html_div() do
             html_button(
-                id="button",
+                id=" downloadbutton",
                 "download"
             )
         end
