@@ -272,7 +272,7 @@ function experimental(
             "<b>$(data[3, :box_lab])</b>"
         ),
         :box3_line2 => (
-            "<i>n</i> = $(data[3, :n])"
+            "$(data[3, :box_var]) <i>n</i> = $(data[3, :n])"
         ),
         :box4_line1 => (
             "$(data[4, :box_lab])"
@@ -284,7 +284,7 @@ function experimental(
             "<b>$(data[5, :box_lab])</b>"
         ),
         :box5_line2 => (
-            "<i>n</i> = $(data[5, :n])"
+            "$(data[5, :box_var]) <i>n</i> = $(data[5, :n])"
         ),
         :box6_line1 => (
             "$(data[6, :box_lab])"
