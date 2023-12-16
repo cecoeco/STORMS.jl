@@ -114,8 +114,8 @@ observationalLayout = html_div() do
             id="observational flowchart",
             figure=(
                 observational(
-            #observational_data=obeservational_data
-            )
+                    #observational_data=obeservational_data
+                )
             )
         ),
         html_div(className="") do
@@ -246,7 +246,8 @@ observationalLayout = html_div() do
             html_a(
                 id="github link",
                 "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies © 2023 Ceco Elijah Maples",
-                href="https://github.com/cecoeco/STORMS.jl")
+                href="https://github.com/cecoeco/STORMS.jl"
+            )
         end
     end
 end
