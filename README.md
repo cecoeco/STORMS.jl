@@ -10,8 +10,8 @@ STORMS.jl :dna: is a Julia package :package: and web application  :spider_web: b
 
 <div align="center">
     <center>
-        <img src="docs/observational.svg" alt="observational example" width="300">
-        <img src="docs/experimental.svg" alt="experimental example" width="300">
+        <img src="docs/img/svg/observational.svg" alt="observational example" width="300">
+        <img src="docs/img/svg/experimental.svg" alt="experimental example" width="300">
     </center>
 </div>
 
