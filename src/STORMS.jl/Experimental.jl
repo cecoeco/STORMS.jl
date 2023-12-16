@@ -52,7 +52,8 @@ function experimental(
     textcolor="black",
     arrowheadshape::Int64=2,
     arrowcolor="black",
-    arrowheadsize::Number=1)
+    arrowheadsize::Number=1
+)
 
     data = CSV.read(experimental_data, DataFrame)
 

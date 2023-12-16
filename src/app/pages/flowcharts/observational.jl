@@ -3,7 +3,7 @@ using Dash
 include("../../../STORMS.jl/Observational.jl")
 include("../../../STORMS.jl/data.jl")
 
-layout = html_div() do
+observationalLayout = html_div() do
     html_div(id="title box") do
         html_h1(id="title") do
             "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
