@@ -698,6 +698,26 @@ function export_csv(
     end
 end
 
+function export_observational_data_csv(
+    obeservational_data=obeservational_data, 
+    save_location=pwd()
+)
+    CSV.write(
+        "$save_location/obeservational_data.csv", 
+        obeservational_data
+    )
+end
+
+function export_experimental_data_csv(
+    experimental_data=experimental_data, 
+    save_location=pwd()
+)
+    CSV.write(
+        "$save_location/experimental_data.csv", 
+        experimental_data
+    )
+end
+
 function export_checklist_csv(
     checklist_data=checklist_data,
     save_location=pwd()
@@ -735,6 +755,26 @@ function export_xlsx(
             checklist_data
         )
     end
+end
+
+function export_observational_data_xlsx(
+    obeservational_data=obeservational_data, 
+    save_location=pwd()
+)
+    XLSX.writetable(
+        "$save_location/obeservational_data.xlsx",
+        obeservational_data
+       )
+end
+
+function export_experimental_data_xlsx(
+    experimental_data=experimental_data, 
+    save_location=pwd()
+)
+    XLSX.writetable(
+        "$save_location/experimental_data.xlsx",
+        experimental_data
+       )
 end
 
 function export_checklist_xlsx(
