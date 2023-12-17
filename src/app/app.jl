@@ -5,6 +5,7 @@ include("pages/home/Home.jl")
 include("pages/checklist/Checklist.jl")
 include("pages/flowcharts/Observational.jl")
 include("pages/flowcharts/Experimental.jl")
+include("footer.jl")
 include("../../../STORMS.jl")
 
 app = dash(
@@ -39,11 +40,11 @@ app = dash(
 app.title = "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
 app.layout = html_div() do
     navbar,
-    html_h1("Hello Dash"),
-    html_div("Dash: A web application framework for your data."),
     dcc_graph(
-
-    )
+        id="graph", 
+        figure=fig
+    ),
+    footer
 end
 run_server(app, "0.0.0.0", debug=true) 
 
