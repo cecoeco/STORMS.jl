@@ -1,21 +1,19 @@
 using Dash
-using DashBootstrapComponents
 
-navbar = dbc_navbarsimple(
+navbar = html_nav(
     id = "navbar",
-    children = [
-        dbc_navitem(dbc_navlink("Home", href = "/Home"), id = "Home page"),
-        dbc_navitem(dbc_navlink("Checklist", href = "/Checklist"), id = "Checklist page"),
-        dbc_dropdownmenu(
-            children=[
-                dbc_dropdownmenuitem("Flowcharts", header = true),
-                dbc_dropdownmenuitem("Observational", href = "/Observational"),
-                dbc_dropdownmenuitem("Experimental", href = "/Experimental"),
-            ],
-            nav=true,
-            in_navbar=true,
-            label = "Flowcharts",
-        )
-    ],
-    brand = "STORMS.jl"
+    [
+        html_a("STORMS.jl", href = "https://github.com/cecoeco/STORMS.jl"),
+        html_ul([
+            html_li(html_a("Home", href = "/Home")),
+            html_li(html_a("Checklist", href = "/Checklist")),
+            html_li([
+                html_a("Flowcharts"),
+                html_ul([
+                    html_li(html_a("Observational", href = "/Observational")),
+                    html_li(html_a("Experimental", href = "/Experimental"))
+                ])
+            ])
+        ])
+    ]
 )
