@@ -8,15 +8,14 @@ navbar = dbc_navbarsimple(
         dbc_navitem(dbc_navlink("Checklist", href = "/Checklist"), id = "Checklist page"),
         dbc_dropdownmenu(
             children=[
-                dbc_dbc_dropdownmenu("Flowcharts", header = True),
-                dbc_dbc_dropdownmenu("Observational", href = "/Observational"),
-                dbc_dbc_dropdownmenu("Experimental", href = "/Experimental"),
+                dbc_dropdownmenuitem("Flowcharts", header = true),
+                dbc_dropdownmenuitem("Observational", href = "/Observational"),
+                dbc_dropdownmenuitem("Experimental", href = "/Experimental"),
             ],
-            nav=True,
-            in_navbar=True,
+            nav=true,
+            in_navbar=true,
             label = "Flowcharts",
         )
     ],
-    brand = "STORMS.jl",
-    brand_href = "#"
+    brand = "STORMS.jl"
 )
