@@ -2,6 +2,7 @@ using Dash
 
 include("../../../STORMS.jl/Observational.jl")
 include("../../../STORMS.jl/data.jl")
+include("../../../app/footer.jl")
 
 observationalLayout = html_div() do
     html_div(id="title box") do
@@ -241,13 +242,5 @@ observationalLayout = html_div() do
             )
         end
     end
-    html_div(id="footer") do
-        html_div() do
-            html_a(
-                id="github link",
-                "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies © 2023 Ceco Elijah Maples",
-                href="https://github.com/cecoeco/STORMS.jl"
-            )
-        end
-    end
+    footer
 end
