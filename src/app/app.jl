@@ -32,6 +32,7 @@ app = dash(
 app.title = "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
 app.layout = html_div(
     [
+        navbar,
         id="root",
         dcc_location(
             id="url",
