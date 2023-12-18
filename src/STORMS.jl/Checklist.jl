@@ -9,16 +9,17 @@ const yMAXIMUM_HEIGHT_CHECKLIST::Int64 = 600
 function checklist(
     checklist_data="docs/checklist_data.csv",
     transparent_bg::Bool=false,
-    #textsize::Number=6,
-    #textfont::AbstractString="Helvetica",
-    #textcolor="black",
-    #textalignment::Vector{String}=["left", "center"],
+    textsize=nothing,
+    textfont=nothing,
+    textcolor=nothing,
+    fillcolor=nothing,
+    textalignment=[nothing, nothing],
     linecolor="black",
     headertextsize::Number=17,
     headertextfont::AbstractString="Helvetica",
     headertextcolor="black",
     headertextalignment::Vector{String}=["left", "center"],
-    headerfillcolor="white",
+    headerfillcolor="gray",
     celltextsize::Number=17,
     celltextfont::AbstractString="Helvetica",
     celltextcolor="black",
@@ -41,12 +42,32 @@ function checklist(
                     data[1, 7]  # COMMENTS OR LOCATION IN MANUSCRIPT
                 ],
                 line_color=linecolor,
-                fill_color=headerfillcolor,
-                align=headertextalignment,
+                fill_color=if fillcolor === nothing 
+                    headerfillcolor
+                else
+                    fillcolor
+                end,
+                align=if textalignment === nothing
+                    headertextalignment
+                else
+                    textalignment
+                end,
                 font=attr(
-                    color=headertextcolor,
-                    font_family=headertextfont,
-                    size=headertextsize
+                    color=if textcolor === nothing
+                        headertextcolor
+                    else
+                        textcolor
+                    end,
+                    font_family=if textfont === nothing
+                        headertextfont
+                    else
+                        textfont
+                    end,
+                    size=if textsize === nothing
+                        headertextsize
+                    else
+                        textsize
+                    end
                 )
             ),
             cells=attr(
@@ -60,18 +81,36 @@ function checklist(
                     data[2:end, 7]  # COMMENTS OR LOCATION IN MANUSCRIPT
                 ],
                 line_color=linecolor,
-                fill_color=cellfillcolor,
-                align=celltextalignment,
+                fill_color=if fillcolor === nothing
+                    cellfillcolor 
+                else 
+                    fillcolor 
+                end,
+                align=if textalignment === nothing
+                    celltextalignment
+                else
+                    textalignment
+                end,
                 font=attr(
-                    color=celltextcolor,
-                    font_family=celltextfont,
-                    size=celltextsize
+                    color=if textcolor === nothing
+                        celltextcolor
+                    else
+                        textcolor
+                    end,
+                    font_family=if textfont === nothing
+                        celltextfont
+                    else
+                        textfont
+                    end,
+                    size=if textsize === nothing
+                        celltextsize
+                    else
+                        textsize
+                    end
                 )
             )
         ),
         Layout(
-            #width=xMAXIMUM_WIDTH_CHECKLIST,
-            #height=yMAXIMUM_HEIGHT_CHECKLIST,
             xaxis=attr(
                 range=[
                     xMINIMUM_WIDTH_CHECKLIST,
