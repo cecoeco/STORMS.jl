@@ -1,5 +1,7 @@
 using PlotlyJS
 using Colors
+using CSV
+using DataFrames
 
 const xMINIMUM_WIDTH_CHECKLIST::Int64 = 0
 const xMAXIMUM_WIDTH_CHECKLIST::Int64 = 1200
@@ -19,7 +21,7 @@ function checklist(
     headertextfont::AbstractString="Helvetica",
     headertextcolor="black",
     headertextalignment::Vector{String}=["left", "center"],
-    headerfillcolor="gray",
+    headerfillcolor="lightgray",
     celltextsize::Number=17,
     celltextfont::AbstractString="Helvetica",
     celltextcolor="black",

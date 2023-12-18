@@ -6,13 +6,17 @@ include("pages/checklist/Checklist.jl")
 include("pages/flowcharts/Observational.jl")
 include("pages/flowcharts/Experimental.jl")
 include("footer.jl")
-include("../../../STORMS.jl")
+include("../../../STORMS.jl/src/STORMS.jl/STORMS.jl")
+
+assets_folder = "src/app/assets"
+external_stylesheets = ["", "", ""]
+external_scripts = [""]
 
 app = dash(
     url_base_pathname="/",
-    assets_folder="/../../../STORMS.jl/src/app/assets",
-    external_scripts=["/../../../app/assets/script.js"],
-    external_stylesheets=["/../../../app/assets/styles.css"],
+    assets_folder=assets_folder,
+    external_scripts=external_scripts,
+    external_stylesheets=external_stylesheets,
     suppress_callback_exceptions=true,
     prevent_initial_callbacks=true,
     meta_tags=[
