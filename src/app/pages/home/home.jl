@@ -1,9 +1,8 @@
 using Dash
 
-include("../../../app/footer.jl")
-
 homeLayout = html_div(
     [
+        dcc_link("Home", href="/Home"),
         html_h1(
             "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
         ),
@@ -33,7 +32,6 @@ homeLayout = html_div(
         ),
         html_p(
             "Experimental description"
-        ),
-        footer
+        )
     ]
 )

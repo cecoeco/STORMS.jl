@@ -2,9 +2,9 @@ using Dash
 
 include("../../../STORMS.jl/Experimental.jl")
 include("../../../STORMS.jl/data.jl")
-include("../../../app/footer.jl")
 
 experimentalLayout = html_div() do
+    dcc_link("Experimental", href = "/Experimental"),
     html_div(id = "title box") do
         html_h1(id = "title") do
             "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
@@ -259,5 +259,4 @@ experimentalLayout = html_div() do
             )
         end
     end
-    footer
 end

@@ -2,9 +2,9 @@ using Dash
 
 include("../../../STORMS.jl/Checklist.jl")
 include("../../../STORMS.jl/data.jl")
-include("../../../app/footer.jl")
 
 checklistLayout = html_div() do
+    dcc_link("Checklist", href = "/Checklist"),
     html_div(id = "title box") do
         html_h1(id = "title") do
             "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
@@ -21,5 +21,4 @@ checklistLayout = html_div() do
             "description"
         end
     end
-    footer
 end

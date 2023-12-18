@@ -786,5 +786,3 @@ function export_checklist_xlsx(
         checklist_data
        )
 end
-
-export_checklist_csv()

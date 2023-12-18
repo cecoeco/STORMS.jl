@@ -38,14 +38,13 @@ app = dash(
     ]
 )
 app.title = "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
-app.layout = html_div() do
-    navbar,
-    dcc_graph(
-        id="graph", 
-        figure=fig
-    ),
-    footer
-end
+app.layout = html_div(
+    [
+        dcc_location(id="url", refresh=false),
+        navbar,
+        footer
+    ]
+)
 run_server(app, "0.0.0.0", debug=true) 
 
 #= go to http://127.0.0.1:8050 =#
