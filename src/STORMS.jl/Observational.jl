@@ -36,7 +36,7 @@ const LINE2_TEXT_PADDING_BOTTOM_3LINED_BOX_OBSERVATIONAL::Float64 = HEIGHT_FOR_B
 const LINE3_TEXT_PADDING_BOTTOM_3LINED_BOX_OBSERVATIONAL::Float64 = HEIGHT_FOR_BOXES_WITH_3_LINES_OF_TEXT_OBSERVATIONAL * 0.25
 
 function observational(
-    observational_data="docs/observational.csv",
+    observational_data="docs/observational_data.csv",
     transparent_bg::Bool=false,
     topboxcolor="white",
     leftboxcolor="white",

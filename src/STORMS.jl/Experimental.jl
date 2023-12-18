@@ -42,7 +42,7 @@ const LINE2_TEXT_PADDING_BOTTOM_3LINED_BOX_EXPERIMENTAL::Float64 = HEIGHT_FOR_BO
 const LINE3_TEXT_PADDING_BOTTOM_3LINED_BOX_EXPERIMENTAL::Float64 = HEIGHT_FOR_BOXES_WITH_3_LINES_OF_TEXT_EXPERIMENTAL * 0.25
 
 function experimental(
-    experimental_data="docs/experimental.csv",
+    experimental_data="docs/experimental_data.csv",
     transparent_bg::Bool=false,
     topboxcolor="white",
     leftboxcolor="white",
