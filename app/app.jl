@@ -1,15 +1,15 @@
 using Dash
 
-include("navbar.jl")
+include("components/navbar.jl")
+include("components/footer.jl")
 include("pages/home/Home.jl")
 include("pages/checklist/Checklist.jl")
 include("pages/flowcharts/Observational.jl")
 include("pages/flowcharts/Experimental.jl")
-include("footer.jl")
 
-assets_folder = "src/app/assets"
-external_stylesheets = ["", "", ""]
-external_scripts = [""]
+assets_folder = "/app/assets"
+external_stylesheets = ["", "", "", ""]
+external_scripts = ["", "", "", ""]
 
 app = dash(
     url_base_pathname="/",
