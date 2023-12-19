@@ -6,7 +6,6 @@ include("pages/checklist/Checklist.jl")
 include("pages/flowcharts/Observational.jl")
 include("pages/flowcharts/Experimental.jl")
 include("footer.jl")
-include("../../../STORMS.jl/src/STORMS.jl/STORMS.jl")
 
 assets_folder = "src/app/assets"
 external_stylesheets = ["", "", ""]
