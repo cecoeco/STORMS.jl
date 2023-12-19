@@ -1,4 +1,4 @@
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.1%20adopted-ff69b4.svg)](https://www.contributor-covenant.org) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.1%20adopted-ff69b4.svg)](https://www.contributor-covenant.org) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://github.com/ceco/STORMS.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ceco/STORMS.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
 <div align="center">
     <center>
