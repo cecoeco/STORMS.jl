@@ -45,6 +45,10 @@ app.layout = html_div(
     [
         dcc_location(id="url", refresh=false),
         navbar,
+        homeLayout,
+        checklistLayout,
+        observationalLayout,    
+        experimentalLayout,
         footer
     ]
 )
