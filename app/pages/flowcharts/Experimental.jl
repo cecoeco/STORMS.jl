@@ -1,7 +1,7 @@
 using Dash
 
-include("../../../STORMS.jl/Experimental.jl")
-include("../../../STORMS.jl/data.jl")
+include("../../../src/Experimental.jl")
+include("../../../src/data.jl")
 
 experimentalLayout = html_div() do
     dcc_link("Experimental", href = "/Experimental"),

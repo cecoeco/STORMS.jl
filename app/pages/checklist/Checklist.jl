@@ -1,7 +1,7 @@
 using Dash
 
-include("../../../STORMS.jl/Checklist.jl")
-include("../../../STORMS.jl/data.jl")
+include("../../../src/Checklist.jl")
+include("../../../src/data.jl")
 
 checklistLayout = html_div() do
     dcc_link("Checklist", href = "/Checklist"),
