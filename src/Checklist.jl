@@ -135,5 +135,3 @@ function checklist(
         )
     )
 end
-
-checklist()

@@ -668,5 +668,3 @@ function observational(
     )
     
 end
-
-observational()
