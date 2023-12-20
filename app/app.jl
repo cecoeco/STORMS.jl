@@ -1,7 +1,7 @@
 using Dash
 
-include("components/navbar.jl")
-include("components/footer.jl")
+include("navbar.jl")
+include("footer.jl")
 include("pages/home/Home.jl")
 include("pages/checklist/Checklist.jl")
 include("pages/flowcharts/Observational.jl")
