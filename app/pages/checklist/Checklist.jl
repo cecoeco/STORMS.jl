@@ -1,5 +1,8 @@
 using Dash
+using DashCoreComponents
 using DashDaq
+using DashHtmlComponents
+using DashTable
 using DataFrames
 using CSV
 

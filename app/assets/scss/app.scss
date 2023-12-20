@@ -1,7 +1,7 @@
 @charset "UTF-8";
-@import "utilities/utilities.scss";
-@import "base/base.scss";
-@import "layout/layout.scss";
-@import "pages/pages.scss";
-@import "components/components.scss";
-@import "vendors/vendors.scss";
+@import "vendors/vendors";
+@import "base/base";
+@import "utilities/utilities";
+@import "layout/layout";
+@import "pages/pages";
+@import "components/components";

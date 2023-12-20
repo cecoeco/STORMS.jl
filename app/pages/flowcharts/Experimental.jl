@@ -1,5 +1,7 @@
 using Dash
+using DashCoreComponents
 using DashDaq
+using DashHtmlComponents
 
 include("../../../src/experimental.jl")
 

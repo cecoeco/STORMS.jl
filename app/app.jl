@@ -1,4 +1,6 @@
 using Dash
+using DashCoreComponents
+using DashHtmlComponents
 
 include("navbar.jl")
 include("footer.jl")
@@ -6,9 +8,10 @@ include("pages/home/Home.jl")
 include("pages/checklist/Checklist.jl")
 include("pages/flowcharts/Observational.jl")
 include("pages/flowcharts/Experimental.jl")
+include("pages/404.jl")
 
-assets_folder = "/app/assets"
-external_stylesheets = ["", "", "", ""]
+assets_folder = "/../../../STORMS.jl/app/assets"
+external_stylesheets = ["/../../../STORMS.jl/app/assets/css/app.css"]
 external_scripts = ["", "", "", ""]
 
 app = dash(
