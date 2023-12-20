@@ -47,7 +47,7 @@ app.layout = html_div(
         navbar,
         homeLayout,
         checklistLayout,
-        observationalLayout,    
+        observationalLayout,
         experimentalLayout,
         footer
     ]
