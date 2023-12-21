@@ -18,7 +18,7 @@ navbar = html_nav(
         ]),
         html_form(className="nav-item", children=[
             dcc_input(type="search", placeholder="Search"),
-            html_button(html_i(className="fa fa-search"), type="submit")
+            html_button(html_i(className="fa-solid fa-magnifying-glass"), type="submit")
         ])
     ]
 )

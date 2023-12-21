@@ -11,17 +11,17 @@ include("pages/flowcharts/Experimental.jl")
 include("pages/404.jl")
 
 assets_folder = "/Users/cecomaples/Desktop/STORMS.jl/app/assets"
+
 external_stylesheets = [
-    "/Users/cecomaples/Desktop/STORMS.jl/app/assets/css/app.css",
-    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+    "https://use.fontawesome.com/releases/v6.5.1/css/all.css",
+    "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
+    "/Users/cecomaples/Desktop/STORMS.jl/app/assets/css/app.css"
 ]
-#external_scripts = ["", "", "", ""]
 
 app = dash(
     url_base_pathname="/",
     assets_folder=assets_folder,
     external_stylesheets=external_stylesheets,
-    #external_scripts=external_scripts,
     suppress_callback_exceptions=true,
     prevent_initial_callbacks=true,
     meta_tags=[
@@ -48,7 +48,7 @@ app = dash(
 )
 app.title = "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
 app.layout = html_div(
-    [
+    children = [
         dcc_location(id="url", refresh=false),
         navbar,
         homeLayout,
