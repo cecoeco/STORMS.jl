@@ -11,7 +11,10 @@ include("pages/flowcharts/Experimental.jl")
 include("pages/404.jl")
 
 assets_folder = "/Users/cecomaples/Desktop/STORMS.jl/app/assets"
-external_stylesheets = ["/Users/cecomaples/Desktop/STORMS.jl/app/assets/css/app.css"]
+external_stylesheets = [
+    "/Users/cecomaples/Desktop/STORMS.jl/app/assets/css/app.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+]
 #external_scripts = ["", "", "", ""]
 
 app = dash(
