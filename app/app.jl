@@ -1,6 +1,13 @@
 using Dash
 using DashCoreComponents
+using DashDaq
 using DashHtmlComponents
+using DashTable
+using PlotlyJS
+using DataFrames
+using CSV
+using XLSX
+using Colors
 
 include("navbar.jl")
 include("footer.jl")
@@ -19,31 +26,17 @@ external_stylesheets = [
 ]
 
 app = dash(
-    url_base_pathname="/",
-    assets_folder=assets_folder,
-    external_stylesheets=external_stylesheets,
-    suppress_callback_exceptions=true,
-    prevent_initial_callbacks=true,
-    meta_tags=[
-        Dict(
-            "charset" => "utf-8"
-        ),
-        Dict(
-            "name" => "viewport",
-            "content" => "width=device-width, initial-scale=1.0",
-        ),
-        Dict(
-            "name" => "description", 
-            "content" => "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
-        ),
-        Dict(
-            "name" => "keywords",
-            "content" => "Microbiome, Microbiology, Biology, Medicine, Research"
-        ),
-        Dict(
-            "name" => "author",
-            "content" => "Ceco Elijah Maples"
-        )
+    url_base_pathname = "/",
+    assets_folder = assets_folder,
+    external_stylesheets = external_stylesheets,
+    suppress_callback_exceptions = true,
+    prevent_initial_callbacks = true,
+    meta_tags = [
+        Dict("charset" => "utf-8"),
+        Dict("name" => "viewport", "content" => "width=device-width, initial-scale=1.0"),
+        Dict("name" => "description", "content" => "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"),
+        Dict("name" => "keywords", "content" => "Microbiome, Microbiology, Biology, Medicine, Research"),
+        Dict("name" => "author", "content" => "Ceco Elijah Maples")
     ]
 )
 app.title = "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
