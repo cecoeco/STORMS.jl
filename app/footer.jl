@@ -5,7 +5,11 @@ footer = html_footer(
     id = "footer",
     className = "footer",
     children = [
-        html_img(src = "", alt = "github logo", className = "footer-logo"),
+        html_img(
+            src = "/Users/cecomaples/Desktop/STORMS.jl/app/assets/img/png/github-mark.png",
+            alt = "github logo",
+            className = "footer-logo"
+        ),
         html_small(
             className = "footer-text",
             children = [

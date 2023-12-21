@@ -10,15 +10,15 @@ include("pages/flowcharts/Observational.jl")
 include("pages/flowcharts/Experimental.jl")
 include("pages/404.jl")
 
-assets_folder = "/../../../STORMS.jl/app/assets"
-external_stylesheets = ["/../../../STORMS.jl/app/assets/css/app.css"]
-external_scripts = ["", "", "", ""]
+assets_folder = "/Users/cecomaples/Desktop/STORMS.jl/app/assets"
+external_stylesheets = ["/Users/cecomaples/Desktop/STORMS.jl/app/assets/css/app.css"]
+#external_scripts = ["", "", "", ""]
 
 app = dash(
     url_base_pathname="/",
     assets_folder=assets_folder,
-    external_scripts=external_scripts,
     external_stylesheets=external_stylesheets,
+    #external_scripts=external_scripts,
     suppress_callback_exceptions=true,
     prevent_initial_callbacks=true,
     meta_tags=[
