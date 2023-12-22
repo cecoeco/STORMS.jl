@@ -1,12 +1,11 @@
 .footer {
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 50px;
-    background-color: #f8f9fa;
+    background-color: #a1a1bb;
     padding: 10px;
-    text-align: center;
+    text-align: left;
 }
 
 .footer-logo {
@@ -21,7 +20,7 @@
 
 .footer-link {
     text-decoration: none;
-    color: #333;
+    color: #000000;
 }
 
 .footer-link:hover {
