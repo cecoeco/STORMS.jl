@@ -1,42 +1,128 @@
+$bg-color: #fa5e4dac;
+
 .navbar {
-    background-color: #f8f9fa;
-    padding: 10px;
-    width: 100%;
+  background-color: $bg-color;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+}
+
+.nav-items-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-items {
+  display: flex;
+  list-style: none;
+  align-items: center;
 }
 
 .nav-item {
-    display: inline-block;
-    margin-right: 10px;
+  display: block;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.dropdown {
-    display: inline;
-    position: relative;
+li[id="STORMS.jl-nav"] {
+  font-weight: bolder;
+  margin-right: 300px;
+  margin-left: 50px;
+} 
+
+.nav-item#Home-nav,
+.nav-item#Checklist-nav,
+.nav-item#Flowcharts-nav {
+  font-weight: bolder;
+  padding-right: auto;
+  padding-left: auto;
+  padding-top: auto;
+  padding-bottom: auto;
+  
+  &:hover {
+    background-color: $bg-color;
+
+    & a {
+      color: #ffffff;
+    }
+  }
 }
 
-.dropdown .dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    padding: 10px;
-    top: 100%;
-    left: 0;
+.nav-item a {
+  text-decoration: none;
+
+  a:hover {
+    text-emphasis: none;
+  }
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: $bg-color;
+  list-style: none;
 }
 
 .dropdown-item {
-    display: block;
-    padding: 5px 0;
+  display: block;
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+  align-items: center;
 }
 
-.dropdown-item a {
-    text-decoration: none;
-    color: #333;
+.dropdown-item:hover {
+  background-color: $bg-color;
 }
 
-.dropdown-item a:hover {
-    color: #007bff;
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.search-container {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.nav-item form {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item input[type="search"] {
+  padding: 0px;
+  margin: 0px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ffffff;
+  border-radius: 5px;
+  background-color: $bg-color;
+  color: #fff;
+  width: 200px;
+  height: 30px;
+
+  &::placeholder {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.nav-item button {
+  padding: 0px;
+  margin: 0px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ffffff;
+  border-radius: 5px;
+  background-color: $bg-color;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  
 }
