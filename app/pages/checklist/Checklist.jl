@@ -8,7 +8,6 @@ using CSV
 
 checklistLayout = html_div(
     children=[
-        #dcc_location(id = "Checklist.jl", pathname = "/Checklist"),
         html_div(html_h1("Checklist")),
         html_div([
             dcc_upload(
