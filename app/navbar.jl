@@ -1,8 +1,9 @@
 using Dash
+using DashBootstrapComponents
 using DashCoreComponents
 using DashHtmlComponents
 
-navbar = html_nav(
+sidebar = dbc_nav(
     id="navbar",
     className="navbar",
     children=[
@@ -12,14 +13,14 @@ navbar = html_nav(
                 html_ul(
                     className="nav-items",
                     children=[
-                        html_li(id="STORMS.jl-nav", className="nav-item", children=html_a("STORMS.jl", href="https://github.com/cecoeco/STORMS.jl")),
-                        html_li(id="Home-nav", className="nav-item", children=html_a("Home", href="/Home")),
-                        html_li(id="Checklist-nav", className="nav-item", children=html_a("Checklist", href="/Checklist")),
+                        html_li(id="STORMS.jl-nav", className="nav-item", children=dbc_navlink("STORMS.jl", href="https://github.com/cecoeco/STORMS.jl", active = "exact")),
+                        html_li(id="Home-nav", className="nav-item", children=dbc_navlink("Home", href="/Home",  active = "exact")),
+                        html_li(id="Checklist-nav", className="nav-item", children=dbc_navlink("Checklist", href="/Checklist",  active = "exact")),
                         html_li(id="Flowcharts-nav", className="nav-item dropdown", children=[
                             html_a("Flowcharts"),
                             html_ul(id="dropdown-menu", className="dropdown-menu", children=[
-                                html_li(id="Observational-nav", className="dropdown-item", children=html_a("Observational", href="/Observational")),
-                                html_li(id="Experimental-nav", className="dropdown-item", children=html_a("Experimental", href="/Experimental"))
+                                html_li(id="Observational-nav", className="dropdown-item", children=dbc_navlink("Observational", href="/Observational", active = "exact")),
+                                html_li(id="Experimental-nav", className="dropdown-item", children=dbc_navlink("Experimental", href="/Experimental",  active = "exact"))
                             ])
                         ]),
                         html_li(id="search-nav", className="nav-item search", children=[

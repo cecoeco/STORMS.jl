@@ -1,4 +1,5 @@
 using Dash
+using DashBootstrapComponents
 using DashCoreComponents
 using DashDaq
 using DashHtmlComponents
@@ -39,18 +40,27 @@ app = dash(
         Dict("name" => "author", "content" => "Ceco Elijah Maples")
     ]
 )
+
 app.title = "STORMS.jl: Strengthening The Organization and Reporting of Microbiome Studies"
-app.layout = html_div(
-    children = [
-        dcc_location(id="url", refresh=false),
-        navbar,
-        homeLayout,
-        checklistLayout,
-        observationalLayout,
-        experimentalLayout,
-        footer
-    ]
-)
+
+content = html_div(id = "page-content")
+
+app.layout = html_div([dcc_location(id = "url"), navbar, content, footer])
+
+callback!(app, Output("page-content", "children"), Input("url", "pathname")) do pathname
+    if pathname == "/Home"
+        return homeLayout
+    elseif pathname == "/Checklist"
+        return checklistLayout
+    elseif pathname == "/Observational"
+        return observationalLayout
+    elseif pathname == "/Experimental"
+        return experimentalLayout
+    else
+        return not_found_404
+    end
+end
+
 run_server(app, "0.0.0.0", debug=true) 
 
 #= go to http://127.0.0.1:8050 =#

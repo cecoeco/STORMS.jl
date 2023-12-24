@@ -7,9 +7,8 @@ using DataFrames
 using CSV
 
 checklistLayout = html_div(
-    id = "checklistLayout",
-    [
-        dcc_link("Checklist", href = "/Checklist"),
+    children=[
+        #dcc_location(id = "Checklist.jl", pathname = "/Checklist"),
         html_div(html_h1("Checklist")),
         html_div([
             dcc_upload(
@@ -18,9 +17,7 @@ checklistLayout = html_div(
             ),
             dash_datatable(
                 id = "Checklist-upload-container",
-                export_format = "xlsx",
-                export_headers = "display",
-                merge_duplicate_headers = true,
+                export_format = "csv",
             ),
             dcc_graph(id = "Checklist-upload-graph"),
         ])

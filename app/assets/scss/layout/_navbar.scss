@@ -1,16 +1,18 @@
-$bg-color: #fa5e4dac;
+$bg-color: #4d4764f6;
+$navbar-height: 60px;
 
 .navbar {
   background-color: $bg-color;
   display: flex;
   align-items: center;
-  height: 60px;
-  width: 100%;
+  height: $navbar-height;
+  width: 100vw;
 }
 
 .nav-items-container {
   display: flex;
   align-items: center;
+  width: 100vw;
 }
 
 .nav-items {
@@ -20,7 +22,7 @@ $bg-color: #fa5e4dac;
 }
 
 .nav-item {
-  display: block;
+  display: inline-block;
   padding-right: 30px;
   padding-left: 30px;
   padding-top: 20px;
@@ -29,7 +31,8 @@ $bg-color: #fa5e4dac;
 
 li[id="STORMS.jl-nav"] {
   font-weight: bolder;
-  margin-right: 300px;
+  font-style: italic;
+  margin-right: 50%;
   margin-left: 50px;
 } 
 
@@ -64,22 +67,26 @@ li[id="STORMS.jl-nav"] {
   position: absolute;
   background-color: $bg-color;
   list-style: none;
+  top: $navbar-height; 
 }
 
 .dropdown-item {
-  display: block;
   list-style: none;
-  padding: 0px;
-  margin: 0;
-  align-items: center;
-}
-
-.dropdown-item:hover {
-  background-color: $bg-color;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .nav-item.dropdown:hover .dropdown-menu {
   display: block;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.dropdown-item:hover {
+  background-color: $bg-color;
 }
 
 .search-container {

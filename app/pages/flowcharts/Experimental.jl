@@ -6,7 +6,7 @@ using DashHtmlComponents
 include("../../../src/experimental.jl")
 
 experimentalLayout = html_div([
-    dcc_link("Experimental", href = "/Experimental"),
+    #dcc_location(id="Experimental.jl", pathname="/Experimental"),
     html_div(html_h1("Experimental")),
     html_div(
         id = "setting-container-experimental",
